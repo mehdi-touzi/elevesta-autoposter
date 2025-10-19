@@ -1,0 +1,45 @@
+<section class="cta" data-scroll="fade">
+  <div class="cta__content">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+    <a href="{{ section.settings.link }}" class="button button--halo">{{ section.settings.label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Appel à l'action",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Prêt à illuminer votre sourire?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sous-titre",
+      "default": "Commandez maintenant et profitez du paiement à la livraison partout au Maroc."
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Lien",
+      "default": "/collections/tous-les-produits"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Texte du bouton",
+      "default": "Commander maintenant"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Denti Luxe",
+      "category": "Appels à l'action"
+    }
+  ]
+}
+{% endschema %}

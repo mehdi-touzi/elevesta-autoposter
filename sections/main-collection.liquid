@@ -1,0 +1,40 @@
+<section class="collection-page" data-scroll="fade">
+  <header class="section-heading">
+    <h1>{{ collection.title }}</h1>
+    <p>{{ collection.description }}</p>
+  </header>
+  <div class="product-grid">
+    {% for product in collection.products %}
+      <article class="product-card" data-scroll="fade">
+        <a href="{{ product.url }}" class="product-card__media">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy">
+          {% else %}
+            <div class="product-placeholder"></div>
+          {% endif %}
+        </a>
+        <div class="product-card__content">
+          <h2 class="product-card__title">{{ product.title }}</h2>
+          <div class="product-card__price">{{ product.price | money }}</div>
+          <a href="{{ product.url }}" class="button button--ghost">{{ section.settings.button_label }}</a>
+        </div>
+      </article>
+    {% else %}
+      <p class="empty-state">Aucun produit dans cette collection pour le moment.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Denti Luxe",
+  "settings": [
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Voir le produit"
+    }
+  ]
+}
+{% endschema %}

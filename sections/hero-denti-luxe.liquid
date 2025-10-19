@@ -1,0 +1,90 @@
+<section class="hero" data-scroll="fade">
+  <div class="hero-media">
+    {% if section.settings.hero_video != blank %}
+      {{ section.settings.hero_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true }}
+    {% elsif section.settings.hero_image != blank %}
+      <img src="{{ section.settings.hero_image | image_url: width: 1600 }}" alt="{{ section.settings.heading }}" loading="lazy">
+    {% else %}
+      <div class="hero-placeholder"></div>
+    {% endif %}
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">{{ section.settings.heading }}</h1>
+    <p class="hero-subtitle">{{ section.settings.subheading }}</p>
+    <div class="hero-actions">
+      <a href="{{ section.settings.primary_link }}" class="button button--halo">{{ section.settings.primary_label }}</a>
+      {% if section.settings.secondary_label != blank %}
+        <a href="{{ section.settings.secondary_link }}" class="button button--outline">{{ section.settings.secondary_label }}</a>
+      {% endif %}
+    </div>
+    {% if section.settings.badge_text != blank %}
+      <span class="badge badge--bestseller" data-animate="pulse">{{ section.settings.badge_text }}</span>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Denti Luxe",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Votre sourire éclatant en 7 jours"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sous-titre",
+      "default": "Blanchiment professionnel à domicile — Approuvé par 12 000+ clients"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Lien principal",
+      "default": "#collection"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Texte du bouton principal",
+      "default": "Découvrir la collection"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Lien secondaire",
+      "default": "#"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Texte du bouton secondaire",
+      "default": "Voir les avis"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Texte du badge",
+      "default": "Best-seller Maroc"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image de héro"
+    },
+    {
+      "type": "video",
+      "id": "hero_video",
+      "label": "Vidéo du héro"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Héro Denti Luxe",
+      "category": "Bannière"
+    }
+  ]
+}
+{% endschema %}

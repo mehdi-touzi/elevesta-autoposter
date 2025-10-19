@@ -1,0 +1,80 @@
+<footer class="site-footer">
+  <div class="footer-top" data-scroll="fade">
+    <div class="footer-brand">
+      <h2 class="footer-title">{{ section.settings.footer_title }}</h2>
+      <p>{{ section.settings.footer_description }}</p>
+    </div>
+    <div class="footer-newsletter">
+      <form method="post" action="{{ routes.newsletter_subscribe_url }}" id="ContactFooter" class="newsletter-form">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <label for="NewsletterEmail" class="visually-hidden">{{ 'general.newsletter_form.newsletter_email' | t }}</label>
+        <input id="NewsletterEmail" type="email" name="contact[email]" placeholder="Votre email" required>
+        <button type="submit" class="button button--halo">{{ section.settings.newsletter_cta }}</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-links">
+      {% if section.settings.show_cod_badge %}
+        <span class="badge badge--cod" data-animate="pulse">{{ section.settings.cod_text }}</span>
+      {% endif %}
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. {{ section.settings.rights_text }}</span>
+    </div>
+    <div class="footer-payment">
+      {% if section.settings.payment_image != blank %}
+        <img src="{{ section.settings.payment_image | image_url: width: 320 }}" alt="Moyens de paiement" loading="lazy">
+      {% else %}
+        <span class="placeholder">Paiement sécurisé</span>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page Denti Luxe",
+  "settings": [
+    {
+      "type": "text",
+      "id": "footer_title",
+      "label": "Titre",
+      "default": "Denti Luxe Maroc"
+    },
+    {
+      "type": "textarea",
+      "id": "footer_description",
+      "label": "Description",
+      "default": "L'excellence du blanchiment dentaire professionnel, directement chez vous."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_cta",
+      "label": "Texte du bouton newsletter",
+      "default": "Je m'inscris"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cod_badge",
+      "label": "Afficher le badge COD",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cod_text",
+      "label": "Texte du badge COD",
+      "default": "Paiement à la livraison disponible"
+    },
+    {
+      "type": "text",
+      "id": "rights_text",
+      "label": "Texte droits",
+      "default": "Tous droits réservés."
+    },
+    {
+      "type": "image_picker",
+      "id": "payment_image",
+      "label": "Image des modes de paiement"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Paramètres généraux",
+    "settings": [
+      {
+        "type": "color",
+        "id": "accent_color",
+        "label": "Couleur d'accent",
+        "default": "#3B82F6"
+      },
+      {
+        "type": "color",
+        "id": "gold_color",
+        "label": "Couleur dorée",
+        "default": "#D4AF37"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Arrière-plan",
+        "default": "#FAFAFA"
+      }
+    ]
+  },
+  {
+    "name": "Typographies",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Police titres",
+        "default": "playfair_display_n7"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Police textes",
+        "default": "poppins_n4"
+      }
+    ]
+  }
+]
