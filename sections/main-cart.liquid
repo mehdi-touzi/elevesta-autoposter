@@ -1,0 +1,61 @@
+<section class="cart" data-scroll="fade">
+  <header class="section-heading">
+    <h1>{{ 'cart.title' | t }}</h1>
+  </header>
+  <form action="{{ routes.cart_url }}" method="post" novalidate>
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>{{ 'cart.label.product' | t }}</th>
+          <th>{{ 'cart.label.quantity' | t }}</th>
+          <th>{{ 'cart.label.total' | t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart.items %}
+          <tr>
+            <td>
+              <div class="cart-product">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
+                {% endif %}
+                <div>
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+                  <p>{{ item.variant.title }}</p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+            </td>
+            <td>{{ item.final_line_price | money }}</td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="3">{{ 'cart.general.empty' | t }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <div class="cart-summary">
+      <p>{{ 'cart.label.subtotal' | t }} {{ cart.total_price | money }}</p>
+      <p class="cod-info">{{ section.settings.cod_info }}</p>
+      <button type="submit" name="update" class="button button--ghost">{{ 'cart.general.update' | t }}</button>
+      <button type="submit" name="checkout" class="button button--halo">{{ 'cart.general.checkout' | t }}</button>
+    </div>
+  </form>
+</section>
+
+{% schema %}
+{
+  "name": "Panier Denti Luxe",
+  "settings": [
+    {
+      "type": "text",
+      "id": "cod_info",
+      "label": "Texte paiement à la livraison",
+      "default": "Paiement à la livraison disponible. Notre équipe vous contacte pour confirmation."
+    }
+  ]
+}
+{% endschema %}

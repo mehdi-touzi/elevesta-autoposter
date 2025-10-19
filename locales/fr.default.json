@@ -1,0 +1,37 @@
+{
+  "general": {
+    "pagination": {
+      "page": "Page {{ number }}"
+    },
+    "accessibility": {
+      "skip_to_content": "Aller au contenu"
+    },
+    "newsletter_form": {
+      "newsletter_email": "Adresse e-mail"
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Panier"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier"
+    }
+  },
+  "cart": {
+    "title": "Votre panier",
+    "label": {
+      "product": "Produit",
+      "quantity": "Quantité",
+      "total": "Total",
+      "subtotal": "Sous-total"
+    },
+    "general": {
+      "empty": "Votre panier est actuellement vide.",
+      "update": "Mettre à jour",
+      "checkout": "Passer au paiement"
+    }
+  }
+}

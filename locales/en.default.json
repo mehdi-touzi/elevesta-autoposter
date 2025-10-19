@@ -1,0 +1,37 @@
+{
+  "general": {
+    "pagination": {
+      "page": "Page {{ number }}"
+    },
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    },
+    "newsletter_form": {
+      "newsletter_email": "Email address"
+    }
+  },
+  "layout": {
+    "cart": {
+      "title": "Cart"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart"
+    }
+  },
+  "cart": {
+    "title": "Your cart",
+    "label": {
+      "product": "Product",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal"
+    },
+    "general": {
+      "empty": "Your cart is currently empty.",
+      "update": "Update cart",
+      "checkout": "Checkout"
+    }
+  }
+}

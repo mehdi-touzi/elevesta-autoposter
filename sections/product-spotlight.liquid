@@ -1,0 +1,75 @@
+<section id="collection" class="product-spotlight" data-scroll="fade">
+  <header class="section-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </header>
+  <div class="product-grid">
+    {% assign featured_collection = collections[section.settings.collection] %}
+    {% if featured_collection and featured_collection.products_count > 0 %}
+      {% for product in featured_collection.products limit: section.settings.products_to_show %}
+        <article class="product-card" data-scroll="fade">
+          <a href="{{ product.url }}" class="product-card__media">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape }}" loading="lazy">
+            {% else %}
+              <div class="product-placeholder"></div>
+            {% endif %}
+          </a>
+          <div class="product-card__content">
+            <h3 class="product-card__title">{{ product.title }}</h3>
+            <div class="product-card__price">{{ product.price | money }}</div>
+            <a href="{{ product.url }}" class="button button--ghost">{{ section.settings.button_label }}</a>
+          </div>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p class="empty-state">Ajoutez une collection pour afficher vos produits phares.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mise en avant produits",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Collection LED Premium"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sous-titre",
+      "default": "Nos innovations cliniques pour un sourire éclatant."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Produits affichés",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Voir le détail"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mise en avant produits",
+      "category": "Produits"
+    }
+  ]
+}
+{% endschema %}

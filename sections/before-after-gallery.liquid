@@ -1,0 +1,74 @@
+<section class="before-after" data-scroll="fade">
+  <header class="section-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </header>
+  <div class="before-after__grid">
+    {% for block in section.blocks %}
+      <figure class="before-after__item" data-scroll="fade">
+        {% if block.settings.image_before != blank %}
+          <img src="{{ block.settings.image_before | image_url: width: 600 }}" alt="Avant" loading="lazy">
+        {% endif %}
+        {% if block.settings.image_after != blank %}
+          <img src="{{ block.settings.image_after | image_url: width: 600 }}" alt="Après" loading="lazy">
+        {% endif %}
+        <figcaption>{{ block.settings.caption }}</figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Galerie avant/après",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Résultats cliniques garantis"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Sous-titre",
+      "default": "Découvrez les transformations spectaculaires obtenues avec Denti Luxe."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result",
+      "name": "Résultat",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_before",
+          "label": "Image avant"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_after",
+          "label": "Image après"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Légende",
+          "default": "Sourire sublimé en 7 jours"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Galerie avant/après",
+      "category": "Images",
+      "blocks": [
+        {"type": "result"},
+        {"type": "result"}
+      ]
+    }
+  ]
+}
+{% endschema %}
