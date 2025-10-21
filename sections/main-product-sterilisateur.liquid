@@ -1,0 +1,100 @@
+{% assign current_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+<section class="denti-product denti-product--sterilisateur">
+  <div class="denti-product__grid">
+    <div class="denti-product__gallery" data-animate="fade">
+      <div class="denti-gallery" data-gallery>
+        <button class="denti-gallery__control denti-gallery__control--prev" type="button" aria-label="Image précédente">‹</button>
+        <div class="denti-gallery__track">
+          <img src="{{ 'sterilisateur-1.png' | asset_url }}" alt="Stérilisateur intelligent Denti Luxe" class="is-active" loading="lazy">
+          <img src="{{ 'sterilisateur-2.png' | asset_url }}" alt="Vue latérale du stérilisateur" loading="lazy">
+          <img src="{{ 'sterilisateur-3.png' | asset_url }}" alt="Stérilisateur UV-C en situation" loading="lazy">
+        </div>
+        <button class="denti-gallery__control denti-gallery__control--next" type="button" aria-label="Image suivante">›</button>
+      </div>
+    </div>
+    <div class="denti-product__details" data-animate="fade">
+      <h1>{{ product.title | default: 'Stérilisateur Intelligent' }}</h1>
+      <p class="denti-product__subtitle">Désinfectez votre brosse à dents et accessoires bucco-dentaires avec la technologie UV-C éliminant 99,9 % des bactéries.</p>
+      <div class="denti-product__ratings">
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <span>4,8/5 (156 avis)</span>
+      </div>
+      <div class="denti-product__price">
+        <span class="denti-product__compare" data-product-compare>399 DH</span>
+        <span class="denti-product__current" data-product-price>299 DH</span>
+      </div>
+      <div class="denti-product__urgency">
+        <div class="denti-product__timer" data-countdown>15:00</div>
+        <div class="denti-product__progress">
+          <div class="denti-product__progress-bar" data-stock-bar></div>
+        </div>
+        <span class="denti-product__stock" data-stock-label>Stock limité</span>
+        <span class="denti-product__stock-count">Il reste <strong data-stock-left>12</strong> appareils disponibles</span>
+      </div>
+      <div class="denti-bundle">
+        <p>Choisissez votre offre</p>
+        <div class="denti-bundle__options">
+          <button type="button" class="denti-bundle__option is-active" data-price="299 DH" data-compare="399 DH" data-quantity="1" data-offer-label="Solo - 1 Stérilisateur">1 appareil – 299 DH</button>
+          <button type="button" class="denti-bundle__option" data-price="549 DH" data-compare="798 DH" data-quantity="2" data-offer-label="Duo - 2 Stérilisateurs">2 appareils – 549 DH</button>
+          <button type="button" class="denti-bundle__option" data-price="749 DH" data-compare="1 197 DH" data-quantity="3" data-offer-label="Famille - 3 Stérilisateurs">3 appareils – 749 DH</button>
+        </div>
+      </div>
+      <form class="denti-form" data-variant-id="{{ current_variant.id }}">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <input type="hidden" name="properties[Offre]" value="Solo - 1 Stérilisateur">
+        <div class="denti-form__quantity">
+          <button type="button" class="denti-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" min="1" value="1" name="quantity" aria-label="Quantité">
+          <button type="button" class="denti-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="submit" class="denti-btn denti-btn--primary denti-btn--full">Commander maintenant</button>
+      </form>
+      <div class="denti-product__assurances">
+        <p>✔️ Technologie UV-C homologuée</p>
+        <p>✔️ Recharge USB-C autonome</p>
+        <p>✔️ Paiement à la livraison disponible</p>
+      </div>
+    </div>
+  </div>
+  <div class="denti-product__why" data-animate="fade">
+    <h2>Une hygiène irréprochable</h2>
+    <div class="denti-product__why-grid">
+      <img src="{{ 'sterilisateur-2.png' | asset_url }}" alt="Détails du stérilisateur intelligent" loading="lazy">
+      <ul>
+        <li>Cycle UV-C de 5 minutes pour une désinfection complète.</li>
+        <li>Capteur intelligent arrêtant la lampe à l’ouverture.</li>
+        <li>Convient à toutes les brosses à dents électriques et manuelles.</li>
+        <li>Autonomie jusqu’à 30 cycles par charge.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="denti-product__reviews" data-animate="fade">
+    <h2>Ils recommandent le stérilisateur</h2>
+    <div class="denti-reviews__grid">
+      <article class="denti-review">
+        <img src="{{ 'review-1.png' | asset_url }}" alt="Avis client stérilisateur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Idéal pour protéger ma brosse à dents. Sent vraiment le propre ! »</p>
+          <span class="denti-review__author">— Rania, Fès</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-3.png' | asset_url }}" alt="Témoignage client stérilisateur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Compact, silencieux, je l’emporte partout en voyage. »</p>
+          <span class="denti-review__author">— Karim, Agadir</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-4.png' | asset_url }}" alt="Photo client stérilisateur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Livraison rapide, service client top. Je me sens plus serein. »</p>
+          <span class="denti-review__author">— Youssef, Tanger</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

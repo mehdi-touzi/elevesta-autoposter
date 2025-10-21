@@ -1,0 +1,777 @@
+:root {
+  --denti-blue: #004a7c;
+  --denti-gold: #cba135;
+  --denti-white: #ffffff;
+  --denti-dark: #0a1a2a;
+  --denti-light: #f4f7fb;
+  --denti-radius: 20px;
+  --denti-gradient: radial-gradient(circle at 20% 20%, rgba(0, 74, 124, 0.35), transparent 55%), linear-gradient(135deg, rgba(0, 74, 124, 0.85), rgba(0, 26, 52, 0.95));
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--denti-dark);
+  background: var(--denti-light);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--denti-gold);
+}
+
+.skip-to-content-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 1rem 2rem;
+  background: var(--denti-blue);
+  color: var(--denti-white);
+  z-index: 1000;
+}
+
+.skip-to-content-link:focus {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.no-js .denti-btn {
+  transition: none;
+}
+
+.denti-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 74, 124, 0.08);
+}
+
+.denti-header__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2rem;
+}
+
+.denti-logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.denti-logo__icon {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--denti-gold), #e9c461);
+  color: var(--denti-dark);
+  font-weight: 700;
+}
+
+.denti-logo__icon--footer {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.denti-logo__brand {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.denti-logo__tagline {
+  display: block;
+  font-size: 0.85rem;
+  color: rgba(10, 26, 42, 0.7);
+}
+
+.denti-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.denti-nav__link {
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  position: relative;
+}
+
+.denti-nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--denti-gold), transparent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.denti-nav__link:hover::after {
+  transform: scaleX(1);
+}
+
+.denti-nav__cta {
+  background: var(--denti-blue);
+  color: var(--denti-white);
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denti-nav__cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 74, 124, 0.25);
+}
+
+.denti-nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: none;
+  border: none;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.denti-nav__toggle span {
+  height: 3px;
+  width: 100%;
+  background: var(--denti-dark);
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.denti-nav__toggle.is-active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.denti-nav__toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.denti-nav__toggle.is-active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.denti-mobile-menu {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem 2rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 74, 124, 0.08);
+}
+
+.denti-mobile-menu__link {
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.denti-mobile-menu__link:hover {
+  background: rgba(0, 74, 124, 0.08);
+}
+
+.denti-mobile-menu__link--cta {
+  background: var(--denti-blue);
+  color: var(--denti-white);
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+.denti-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  padding: 6rem 0 4rem;
+  align-items: center;
+}
+
+.denti-hero__content h1 {
+  font-size: clamp(2.5rem, 3.5vw, 3.7rem);
+  margin-bottom: 1rem;
+  color: var(--denti-dark);
+}
+
+.denti-hero__content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(10, 26, 42, 0.8);
+}
+
+.denti-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.denti-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.9rem 1.8rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.denti-btn--primary {
+  background: var(--denti-blue);
+  color: var(--denti-white);
+  box-shadow: 0 18px 35px rgba(0, 74, 124, 0.25);
+}
+
+.denti-btn--primary:hover {
+  transform: translateY(-4px);
+}
+
+.denti-btn--outline {
+  border: 2px solid rgba(0, 74, 124, 0.2);
+  color: var(--denti-blue);
+  background: transparent;
+}
+
+.denti-btn--outline:hover {
+  border-color: var(--denti-blue);
+}
+
+.denti-btn--glow {
+  background: linear-gradient(135deg, var(--denti-gold), #ffd472);
+  color: var(--denti-dark);
+  box-shadow: 0 18px 45px rgba(203, 161, 53, 0.45);
+}
+
+.denti-btn--glow:hover {
+  transform: translateY(-4px);
+}
+
+.denti-btn--full {
+  width: 100%;
+}
+
+.denti-btn.is-loading::after {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-top-color: transparent;
+  animation: denti-spin 0.8s linear infinite;
+}
+
+@keyframes denti-spin {
+  to { transform: rotate(360deg); }
+}
+
+.denti-hero__badges {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  font-weight: 500;
+  color: var(--denti-blue);
+}
+
+.denti-hero__visual {
+  position: relative;
+  justify-self: center;
+}
+
+.denti-hero__halo {
+  position: absolute;
+  inset: -10% -10% -5% -10%;
+  background: var(--denti-gradient);
+  filter: blur(25px);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.denti-trust {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0 4rem;
+}
+
+.denti-trust article {
+  background: var(--denti-white);
+  padding: 1.5rem;
+  border-radius: var(--denti-radius);
+  box-shadow: 0 20px 45px rgba(0, 74, 124, 0.08);
+  text-align: center;
+}
+
+.denti-trust__icon {
+  font-size: 2rem;
+}
+
+.denti-products header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.denti-products__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.denti-product-card {
+  background: var(--denti-white);
+  border-radius: var(--denti-radius);
+  padding: 1.8rem;
+  box-shadow: 0 25px 45px rgba(0, 74, 124, 0.08);
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+.denti-product-card__price {
+  font-weight: 600;
+  color: var(--denti-blue);
+}
+
+.denti-reviews {
+  margin: 6rem 0;
+}
+
+.denti-reviews__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.denti-review {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 1rem;
+  background: var(--denti-white);
+  border-radius: var(--denti-radius);
+  padding: 1.3rem;
+  box-shadow: 0 20px 40px rgba(0, 74, 124, 0.07);
+}
+
+.denti-review__stars {
+  color: var(--denti-gold);
+  font-weight: 600;
+}
+
+.denti-offer {
+  background: linear-gradient(135deg, rgba(0, 74, 124, 0.95), rgba(10, 26, 42, 0.95));
+  color: var(--denti-white);
+  border-radius: var(--denti-radius);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.denti-offer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(203, 161, 53, 0.25), transparent 60%);
+  pointer-events: none;
+}
+
+.denti-offer__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.denti-offer__timer {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.denti-offer__progress {
+  width: 100%;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+.denti-offer__progress-bar {
+  width: var(--progress, 60%);
+  height: 100%;
+  background: linear-gradient(90deg, rgba(203, 161, 53, 0.15), var(--denti-gold));
+  transition: width 0.6s ease;
+}
+
+.denti-offer__stock-count strong,
+.denti-product__stock-count strong {
+  color: var(--denti-gold);
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.denti-product {
+  margin: 6rem 0;
+  display: grid;
+  gap: 3rem;
+}
+
+.denti-product__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.denti-product__gallery {
+  position: relative;
+}
+
+.denti-gallery {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--denti-radius);
+  background: var(--denti-white);
+  box-shadow: 0 25px 45px rgba(0, 74, 124, 0.08);
+}
+
+.denti-gallery__track {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+}
+
+.denti-gallery__track img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.denti-gallery__control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
+  color: var(--denti-blue);
+}
+
+.denti-gallery__control--prev { left: 1rem; }
+.denti-gallery__control--next { right: 1rem; }
+
+.denti-product__subtitle {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(10, 26, 42, 0.75);
+}
+
+.denti-product__ratings {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  color: var(--denti-gold);
+}
+
+.denti-product__price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.denti-product__compare {
+  text-decoration: line-through;
+  color: rgba(10, 26, 42, 0.4);
+  font-size: 1rem;
+}
+
+.denti-product__urgency {
+  display: grid;
+  gap: 0.75rem;
+  background: rgba(0, 74, 124, 0.06);
+  padding: 1.25rem;
+  border-radius: var(--denti-radius);
+}
+
+.denti-product__progress {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(0, 74, 124, 0.15);
+  overflow: hidden;
+}
+
+.denti-product__progress-bar {
+  width: var(--progress, 55%);
+  height: 100%;
+  background: linear-gradient(90deg, rgba(203, 161, 53, 0.15), var(--denti-gold));
+  transition: width 0.6s ease;
+}
+
+.denti-bundle {
+  margin: 2rem 0;
+}
+
+.denti-bundle__options {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.denti-bundle__option {
+  border: 1px solid rgba(0, 74, 124, 0.25);
+  border-radius: var(--denti-radius);
+  padding: 0.9rem 1rem;
+  background: var(--denti-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.denti-bundle__option:hover,
+.denti-bundle__option.is-active {
+  border-color: var(--denti-blue);
+  box-shadow: 0 15px 35px rgba(0, 74, 124, 0.15);
+  transform: translateY(-3px);
+}
+
+.denti-form__quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: var(--denti-white);
+  box-shadow: inset 0 0 0 1px rgba(0, 74, 124, 0.15);
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.denti-qty {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--denti-blue);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+}
+
+.denti-form__quantity input {
+  width: 3rem;
+  text-align: center;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+}
+
+.denti-product__assurances {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  color: rgba(10, 26, 42, 0.75);
+}
+
+.denti-product__why {
+  background: var(--denti-white);
+  border-radius: var(--denti-radius);
+  padding: 2.5rem;
+  box-shadow: 0 25px 45px rgba(0, 74, 124, 0.08);
+  display: grid;
+  gap: 1.5rem;
+}
+
+.denti-product__why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.denti-product__why-grid ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.75rem;
+  color: rgba(10, 26, 42, 0.75);
+}
+
+.denti-product__reviews {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.denti-footer {
+  background: #020f1f;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 4rem 2rem 2.5rem;
+  margin-top: 4rem;
+}
+
+.denti-footer__top {
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+}
+
+.denti-footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.denti-footer__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.denti-footer__subtitle {
+  margin: 0.3rem 0 0;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.denti-footer__cta {
+  max-width: 420px;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.denti-footer__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.denti-footer__grid h3 {
+  color: var(--denti-white);
+  margin-bottom: 1rem;
+}
+
+.denti-footer__grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.denti-footer__social {
+  gap: 0.6rem;
+}
+
+.denti-footer__payments {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 1.4rem;
+}
+
+.denti-footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 960px) {
+  .denti-nav {
+    display: none;
+  }
+  .denti-nav__toggle {
+    display: flex;
+  }
+  main {
+    padding: 0 1.5rem 5rem;
+  }
+  .denti-hero {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .denti-header__inner {
+    padding: 1rem 1.25rem;
+  }
+  main {
+    padding: 0 1rem 4rem;
+  }
+  .denti-hero__badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .denti-offer {
+    padding: 2.5rem;
+  }
+  .denti-gallery__control {
+    display: none;
+  }
+  .denti-product__urgency {
+    gap: 0.6rem;
+  }
+  .denti-footer {
+    padding: 3rem 1.5rem 2rem;
+  }
+}

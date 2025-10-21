@@ -1,0 +1,104 @@
+{% assign current_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+<section class="denti-product denti-product--kit">
+  <div class="denti-product__grid">
+    <div class="denti-product__gallery" data-animate="fade">
+      <div class="denti-gallery" data-gallery>
+        <button class="denti-gallery__control denti-gallery__control--prev" type="button" aria-label="Image précédente">‹</button>
+        <div class="denti-gallery__track">
+          <img src="{{ 'kit-led-1.png' | asset_url }}" alt="Kit LED Denti Luxe" class="is-active" loading="lazy">
+          <img src="{{ 'kit-led-2.png' | asset_url }}" alt="Kit LED Denti Luxe accessoires" loading="lazy">
+          <img src="{{ 'kit-led-3.png' | asset_url }}" alt="Kit LED Denti Luxe en action" loading="lazy">
+          <img src="{{ 'kit-before.png' | asset_url }}" alt="Avant Denti Luxe" loading="lazy">
+          <img src="{{ 'kit-after.png' | asset_url }}" alt="Après Denti Luxe" loading="lazy">
+        </div>
+        <button class="denti-gallery__control denti-gallery__control--next" type="button" aria-label="Image suivante">›</button>
+      </div>
+    </div>
+    <div class="denti-product__details" data-animate="fade">
+      <h1>{{ product.title | default: 'Kit LED Denti Luxe' }}</h1>
+      <p class="denti-product__subtitle">Blanchiment dentaire professionnel à domicile avec technologie LED froide et gel sans sensibilité.</p>
+      <div class="denti-product__ratings">
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <span>4,9/5 (198 avis)</span>
+      </div>
+      <div class="denti-product__price">
+        <span class="denti-product__compare" data-product-compare>429 DH</span>
+        <span class="denti-product__current" data-product-price>299 DH</span>
+      </div>
+      <div class="denti-product__urgency">
+        <div class="denti-product__timer" data-countdown>15:00</div>
+        <div class="denti-product__progress">
+          <div class="denti-product__progress-bar" data-stock-bar></div>
+        </div>
+        <span class="denti-product__stock" data-stock-label>Stock très limité</span>
+        <span class="denti-product__stock-count">Il reste <strong data-stock-left>12</strong> kits aujourd'hui</span>
+      </div>
+      <div class="denti-bundle">
+        <p>Choisissez votre offre</p>
+        <div class="denti-bundle__options">
+          <button type="button" class="denti-bundle__option is-active" data-price="299 DH" data-compare="429 DH" data-quantity="1" data-offer-label="Offre Solo - 1 Kit">1 Kit – 299 DH</button>
+          <button type="button" class="denti-bundle__option" data-price="549 DH" data-compare="858 DH" data-quantity="2" data-offer-label="Offre Duo - 2 Kits">2 Kits – 549 DH</button>
+          <button type="button" class="denti-bundle__option" data-price="749 DH" data-compare="1 287 DH" data-quantity="3" data-offer-label="Offre Famille - 3 Kits">3 Kits – 749 DH</button>
+        </div>
+      </div>
+      <form class="denti-form" data-variant-id="{{ current_variant.id }}">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <input type="hidden" name="properties[Offre]" value="Offre Solo - 1 Kit">
+        <div class="denti-form__quantity">
+          <button type="button" class="denti-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" min="1" value="1" name="quantity" aria-label="Quantité">
+          <button type="button" class="denti-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="submit" class="denti-btn denti-btn--primary denti-btn--full">
+          Commander maintenant
+        </button>
+      </form>
+      <div class="denti-product__assurances">
+        <p>✔️ Paiement à la livraison</p>
+        <p>✔️ Livraison 24-48h partout au Maroc</p>
+        <p>✔️ Garantie satisfait ou remboursé 30 jours</p>
+      </div>
+    </div>
+  </div>
+  <div class="denti-product__why" data-animate="fade">
+    <h2>Pourquoi choisir Denti Luxe ?</h2>
+    <div class="denti-product__why-grid">
+      <img src="{{ 'kit-led-3.png' | asset_url }}" alt="Pourquoi choisir le Kit LED Denti Luxe" loading="lazy">
+      <ul>
+        <li>Lumière LED froide à haute intensité pour un blanchiment uniforme.</li>
+        <li>Gel formulé par des dentistes, sans peroxyde agressif.</li>
+        <li>Résultats visibles dès la première semaine.</li>
+        <li>Application ergonomique avec gouttière flexible.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="denti-product__reviews" data-animate="fade">
+    <h2>Avis clients (4,9/5)</h2>
+    <div class="denti-reviews__grid">
+      <article class="denti-review">
+        <img src="{{ 'kit-after.png' | asset_url }}" alt="Résultat client Denti Luxe" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Mon sourire n’a jamais été aussi lumineux, j’ai gagné 3 teintes ! »</p>
+          <span class="denti-review__author">— Hajar, Casablanca</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-2.png' | asset_url }}" alt="Avis client sur le kit" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Aucun inconfort, le résultat est visible dès la deuxième utilisation. »</p>
+          <span class="denti-review__author">— Lina, Rabat</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-3.png' | asset_url }}" alt="Témoignage client Denti Luxe" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Packaging premium, service client réactif, je recommande. »</p>
+          <span class="denti-review__author">— Amal, Marrakech</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

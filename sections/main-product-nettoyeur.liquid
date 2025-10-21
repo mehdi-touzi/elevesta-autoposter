@@ -1,0 +1,99 @@
+{% assign current_variant = product.selected_or_first_available_variant | default: product.variants.first %}
+<section class="denti-product denti-product--nettoyeur">
+  <div class="denti-product__grid">
+    <div class="denti-product__gallery" data-animate="fade">
+      <div class="denti-gallery" data-gallery>
+        <button class="denti-gallery__control denti-gallery__control--prev" type="button" aria-label="Image précédente">‹</button>
+        <div class="denti-gallery__track">
+          <img src="{{ 'nettoyeur-1.png' | asset_url }}" alt="Nettoyeur dentaire électrique Denti Luxe" class="is-active" loading="lazy">
+          <img src="{{ 'nettoyeur-2.png' | asset_url }}" alt="Embouts du nettoyeur dentaire" loading="lazy">
+          <img src="{{ 'nettoyeur-3.png' | asset_url }}" alt="Nettoyeur dentaire en utilisation" loading="lazy">
+        </div>
+        <button class="denti-gallery__control denti-gallery__control--next" type="button" aria-label="Image suivante">›</button>
+      </div>
+    </div>
+    <div class="denti-product__details" data-animate="fade">
+      <h1>{{ product.title | default: 'Nettoyeur Dentaire Électrique' }}</h1>
+      <p class="denti-product__subtitle">Éliminez tartre et taches en quelques minutes grâce à ses vibrations ultrasoniques et ses embouts pro.</p>
+      <div class="denti-product__ratings">
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <span>4,9/5 (178 avis)</span>
+      </div>
+      <div class="denti-product__price">
+        <span class="denti-product__compare" data-product-compare>449 DH</span>
+        <span class="denti-product__current" data-product-price>349 DH</span>
+      </div>
+      <div class="denti-product__urgency">
+        <div class="denti-product__timer" data-countdown>15:00</div>
+        <div class="denti-product__progress">
+          <div class="denti-product__progress-bar" data-stock-bar></div>
+        </div>
+        <span class="denti-product__stock" data-stock-label>Stock presque épuisé</span>
+        <span class="denti-product__stock-count">Plus que <strong data-stock-left>12</strong> nettoyeurs disponibles</span>
+      </div>
+      <div class="denti-bundle">
+        <p>Choisissez votre offre</p>
+        <div class="denti-bundle__options">
+          <button type="button" class="denti-bundle__option is-active" data-price="349 DH" data-compare="449 DH" data-quantity="1" data-offer-label="Offre Solo - 1 Nettoyeur">1 appareil – 349 DH</button>
+          <button type="button" class="denti-bundle__option" data-price="649 DH" data-compare="898 DH" data-quantity="2" data-offer-label="Offre Duo - 2 Nettoyeurs">2 appareils – 649 DH</button>
+        </div>
+      </div>
+      <form class="denti-form" data-variant-id="{{ current_variant.id }}">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <input type="hidden" name="properties[Offre]" value="Offre Solo - 1 Nettoyeur">
+        <div class="denti-form__quantity">
+          <button type="button" class="denti-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" min="1" value="1" name="quantity" aria-label="Quantité">
+          <button type="button" class="denti-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="submit" class="denti-btn denti-btn--primary denti-btn--full">Commander maintenant</button>
+      </form>
+      <div class="denti-product__assurances">
+        <p>✔️ 5 embouts professionnels inclus</p>
+        <p>✔️ Recharge USB magnétique</p>
+        <p>✔️ Garantie 1 an Maroc</p>
+      </div>
+    </div>
+  </div>
+  <div class="denti-product__why" data-animate="fade">
+    <h2>Résultats visibles dès la première utilisation</h2>
+    <div class="denti-product__why-grid">
+      <img src="{{ 'nettoyeur-2.png' | asset_url }}" alt="Détails du nettoyeur dentaire Denti Luxe" loading="lazy">
+      <ul>
+        <li>Vibrations ultrasoniques 42 000 Hz pour déloger la plaque dentaire.</li>
+        <li>5 modes intelligents : Doux, Blanc, Massage, Nettoyage, Pulse.</li>
+        <li>Lampe LED intégrée pour une visibilité parfaite.</li>
+        <li>Résistant à l’eau IPX6.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="denti-product__reviews" data-animate="fade">
+    <h2>Nos clients témoignent</h2>
+    <div class="denti-reviews__grid">
+      <article class="denti-review">
+        <img src="{{ 'review-2.png' | asset_url }}" alt="Avis client nettoyeur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Mes dents sont plus lisses que jamais, sans rendez-vous chez le dentiste. »</p>
+          <span class="denti-review__author">— Sara, Marrakech</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-1.png' | asset_url }}" alt="Photo client nettoyeur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Très facile à utiliser, j’adore les différents embouts fournis. »</p>
+          <span class="denti-review__author">— Amina, Casablanca</span>
+        </div>
+      </article>
+      <article class="denti-review">
+        <img src="{{ 'review-4.png' | asset_url }}" alt="Témoignage client nettoyeur" loading="lazy">
+        <div>
+          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
+          <p>« Livraison rapide, appareil puissant mais doux. »</p>
+          <span class="denti-review__author">— Walid, Rabat</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
