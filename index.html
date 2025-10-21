@@ -1,16 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elevesta AutoPoster Policies</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stérilisateur Intelligent Denti Luxe</title>
+  <style>
+    :root {
+      --color-primary: #004A7C;
+      --color-secondary: #475569;
+      --color-accent: #CBA135;
+      --color-accent-light: #E5C56F;
+      --font-main: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: var(--font-main);
+    }
+
+    .dlp-product {
+      padding: 20px 10px 40px;
+      text-align: center;
+    }
+
+    .dlp-carousel {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      border-radius: 16px;
+      max-width: 800px;
+      margin: 0 auto 20px;
+    }
+
+    .dlp-carousel img {
+      width: 100%;
+      max-width: 420px;
+      scroll-snap-align: center;
+      border-radius: 14px;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    .dlp-title {
+      color: var(--color-primary);
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 700;
+      margin: 10px 0 6px;
+    }
+
+    .dlp-subtitle {
+      color: var(--color-secondary);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .dlp-bundles {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .dlp-bundle {
+      background: #fff;
+      border: 2px solid var(--color-accent);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      width: 85%;
+      max-width: 360px;
+      color: var(--color-primary);
+    }
+
+    .dlp-bundle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.07);
+    }
+
+    .dlp-bundle.is-active {
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(203, 161, 53, 0.35);
+    }
+
+    .dlp-qtybox {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .dlp-qtybox input {
+      width: 60px;
+      text-align: center;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    .dlp-qtybox button {
+      width: 40px;
+      height: 40px;
+      background: #F1F5F9;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .dlp-qtybox button:hover {
+      background: #E2E8F0;
+    }
+
+    .dlp-btn {
+      background: linear-gradient(90deg, var(--color-accent), #E7C963);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+      padding: 14px 22px;
+      border-radius: 40px;
+      cursor: pointer;
+      font-size: 17px;
+      box-shadow: 0 0 15px rgba(203, 161, 53, 0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      width: 85%;
+      max-width: 360px;
+      margin: 12px auto;
+    }
+
+    .dlp-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 25px rgba(203, 161, 53, 0.6);
+    }
+
+    .dlp-stock {
+      max-width: 360px;
+      margin: 10px auto 0;
+    }
+
+    .dlp-progress {
+      height: 8px;
+      background: #EEE;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .dlp-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+      width: 0;
+      transition: width 0.5s ease;
+    }
+
+    .dlp-stock-text {
+      color: var(--color-accent);
+      font-size: 14px;
+      font-weight: 600;
+      margin-top: 6px;
+    }
+
+    .dlp-timer {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-top: 10px;
+    }
+
+    .dlp-desc {
+      margin-top: 24px;
+    }
+
+    .dlp-desc img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 12px;
+      margin: 10px auto;
+      display: block;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .dlp-desc h3 {
+      color: var(--color-primary);
+      margin-top: 12px;
+    }
+
+    .dlp-desc p {
+      color: var(--color-secondary);
+      max-width: 500px;
+      margin: 0 auto 10px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 749px) {
+      .dlp-carousel img {
+        max-width: 320px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Elevesta AutoPoster</h1>
-  <h2>Privacy Policy</h2>
-  <p>We respect your privacy. Elevesta AutoPoster does not collect or store any personal data. Authentication and posting are handled directly via TikTok’s official API.</p>
+  <section id="sterilisateur-denti-luxe" class="dlp-product">
+    <div class="dlp-carousel" aria-label="Visuels du stérilisateur Denti Luxe">
+      <img src="{{ 'sterilisateur-1.png' | file_url }}" alt="Stérilisateur Denti Luxe 1">
+      <img src="{{ 'sterilisateur-2.png' | file_url }}" alt="Stérilisateur Denti Luxe 2">
+      <img src="{{ 'sterilisateur-3.png' | file_url }}" alt="Stérilisateur Denti Luxe 3">
+    </div>
 
-  <h2>Terms of Service</h2>
-  <p>By using Elevesta AutoPoster, you authorize the app to connect with your TikTok account through TikTok’s secure OAuth process. We are not affiliated with TikTok.</p>
+    <h2 class="dlp-title">Stérilisateur Intelligent Denti Luxe</h2>
+    <p class="dlp-subtitle">Le rangement intelligent qui élimine 99,9% des bactéries de vos brosses à dents.</p>
+
+    <div class="dlp-bundles" role="group" aria-label="Offres de stérilisateurs">
+      <button type="button" class="dlp-bundle is-active" data-bundle="1" data-price="299">1 Stérilisateur — 299 DH</button>
+      <button type="button" class="dlp-bundle" data-bundle="2" data-price="549">🔥 2 Stérilisateurs — 549 DH</button>
+      <button type="button" class="dlp-bundle" data-bundle="3" data-price="749">💎 3 Stérilisateurs — 749 DH</button>
+    </div>
+
+    <div class="dlp-qtybox" aria-label="Sélection de quantité">
+      <button type="button" data-qty-minus aria-label="Réduire la quantité">−</button>
+      <input type="number" value="1" min="1" inputmode="numeric" data-dlp-qty aria-label="Quantité choisie">
+      <button type="button" data-qty-plus aria-label="Augmenter la quantité">+</button>
+    </div>
+
+    <button type="button" class="dlp-btn" data-dlp-cta>🛍️ Commander maintenant</button>
+
+    <div class="dlp-stock" aria-live="polite">
+      <div class="dlp-progress">
+        <div class="dlp-progress-bar" id="stockBar"></div>
+      </div>
+      <div class="dlp-stock-text" id="stockText">⚡ Stock presque épuisé : 7 exemplaires restants</div>
+      <div class="dlp-timer" id="dlpTimer">⏰ Offre se termine dans 15:00</div>
+    </div>
+
+    <div class="dlp-desc">
+      <img src="{{ 'vision-sterilisateur.png' | file_url }}" alt="Vision stérilisateur Denti Luxe">
+      <h3>Pourquoi choisir le stérilisateur Denti Luxe ?</h3>
+      <p>Éliminez 99,9% des bactéries grâce à la technologie UV-C et conservez vos brosses impeccablement propres. Design compact, charge rapide et facilité d’installation.</p>
+      <img src="{{ 'utiliser-sterilisateur.png' | file_url }}" alt="Utilisation stérilisateur Denti Luxe">
+    </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bundleBtns = Array.from(document.querySelectorAll('[data-bundle]'));
+      const qtyInput = document.querySelector('[data-dlp-qty]');
+      const ctaBtn = document.querySelector('[data-dlp-cta]');
+      const stockBar = document.getElementById('stockBar');
+      const stockText = document.getElementById('stockText');
+      const timerEl = document.getElementById('dlpTimer');
+      const minusBtn = document.querySelector('[data-qty-minus]');
+      const plusBtn = document.querySelector('[data-qty-plus]');
+      const variantId = {{ product.selected_or_first_available_variant.id }};
+
+      const clampQty = (value) => Math.max(1, Number.isFinite(value) ? Math.floor(value) : 1);
+
+      const syncBundleButtons = (quantity) => {
+        let matched = false;
+        bundleBtns.forEach((btn) => {
+          const bundleQty = Number(btn.dataset.bundle);
+          if (bundleQty === quantity) {
+            btn.classList.add('is-active');
+            matched = true;
+          } else {
+            btn.classList.remove('is-active');
+          }
+        });
+        if (!matched) {
+          bundleBtns.forEach((btn) => btn.classList.remove('is-active'));
+        }
+      };
+
+      const setQuantity = (value) => {
+        const safeValue = clampQty(value);
+        qtyInput.value = safeValue;
+        syncBundleButtons(safeValue);
+        return safeValue;
+      };
+
+      // Initialise quantity and bundle state
+      setQuantity(Number(qtyInput.value));
+
+      // Stock indicator
+      const stock = Math.floor(Math.random() * 10) + 5;
+      stockText.textContent = `⚡ Stock presque épuisé : ${stock} exemplaires restants`;
+      stockBar.style.width = `${Math.min(100, (stock / 20) * 100)}%`;
+
+      // Bundle selection
+      bundleBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          bundleBtns.forEach((item) => item.classList.remove('is-active'));
+          btn.classList.add('is-active');
+          setQuantity(Number(btn.dataset.bundle));
+        });
+      });
+
+      // Quantity controls
+      minusBtn.addEventListener('click', () => setQuantity(Number(qtyInput.value) - 1));
+      plusBtn.addEventListener('click', () => setQuantity(Number(qtyInput.value) + 1));
+
+      qtyInput.addEventListener('change', () => setQuantity(Number(qtyInput.value)));
+      qtyInput.addEventListener('input', () => setQuantity(Number(qtyInput.value)));
+
+      // Countdown timer
+      const endTime = Date.now() + 15 * 60 * 1000;
+      const updateTimer = () => {
+        const diff = endTime - Date.now();
+        if (diff <= 0) {
+          timerEl.textContent = '⏰ L’offre spéciale est terminée !';
+          clearInterval(timerId);
+          return;
+        }
+        const minutes = String(Math.floor(diff / 60000)).padStart(2, '0');
+        const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+        timerEl.textContent = `⏰ Offre se termine dans ${minutes}:${seconds}`;
+      };
+      const timerId = setInterval(updateTimer, 1000);
+      updateTimer();
+
+      // Add to cart
+      if (ctaBtn) {
+        ctaBtn.addEventListener('click', async () => {
+          const quantity = clampQty(Number(qtyInput.value));
+          try {
+            const response = await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ id: variantId, quantity })
+            });
+
+            if (!response.ok) {
+              throw new Error('Réponse invalide du serveur');
+            }
+
+            window.location.href = '/checkout';
+          } catch (error) {
+            console.error(error);
+            alert('Erreur lors de l’ajout au panier. Vérifie ton produit Shopify.');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
