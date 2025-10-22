@@ -1,0 +1,152 @@
+{% assign current_product = product %}
+{% assign selected_variant = current_product.selected_or_first_available_variant | default: current_product.variants.first %}
+{% capture variant_payload %}
+[
+  {% for variant in current_product.variants %}
+    {
+      "id": {{ variant.id }},
+      "title": {{ variant.title | json }},
+      "price_formatted": {{ variant.price | money_without_trailing_zeros | json }},
+      "compare_formatted": {{ variant.compare_at_price | money_without_trailing_zeros | json }},
+      "price_value": {{ variant.price }},
+      "compare_value": {{ variant.compare_at_price | default: 0 }},
+      "available": {{ variant.available | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+{% endcapture %}
+<section class="dlp-product dlp-product--nettoyeur" data-product-root data-selected-variant="{{ selected_variant.id }}" data-variants='{{ variant_payload | strip_newlines | replace: "'", "&#39;" }}'>
+  <div class="dlp-product__layout">
+    <div class="dlp-product__media" data-animate>
+      <div class="dlp-carousel" data-carousel>
+        <button type="button" class="dlp-prev" aria-label="Image précédente">‹</button>
+        <div class="dlp-track">
+          <div class="dlp-slide">
+            <img src="{{ 'nettoyeur-1.png' | file_url }}" alt="Nettoyeur dentaire électrique Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'nettoyeur-2.png' | file_url }}" alt="Embouts du nettoyeur dentaire" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'nettoyeur-3.png' | file_url }}" alt="Nettoyeur dentaire en action" loading="lazy">
+          </div>
+        </div>
+        <button type="button" class="dlp-next" aria-label="Image suivante">›</button>
+        <div class="dlp-dots" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="dlp-product__info" data-animate>
+      <header class="dlp-product__header">
+        <p class="dlp-product__tag">Nettoyage dentaire haute précision</p>
+        <h1>{{ current_product.title | default: 'Nettoyeur Dentaire Électrique' }}</h1>
+        <p class="dlp-product__subtitle">Éliminez tartre et taches avec 5 modes intelligents, embouts interchangeables et vibration ultrasonique douce.</p>
+        <div class="dlp-product__rating">
+          <span aria-label="Note 5 sur 5">★★★★★</span>
+          <span>4,8/5 (173 avis)</span>
+        </div>
+      </header>
+      <div class="dlp-price">
+        <span class="dlp-price__compare" data-compare{% unless selected_variant.compare_at_price > selected_variant.price %} hidden{% endunless %}>{{ selected_variant.compare_at_price | money_without_trailing_zeros }}</span>
+        <span class="dlp-price__current" data-price>{{ selected_variant.price | money_without_trailing_zeros }}</span>
+      </div>
+      {% if current_product.variants.size > 1 %}
+        <label class="dlp-variant-label" for="dlp-variant-{{ section.id }}">Sélectionnez votre option</label>
+        <select id="dlp-variant-{{ section.id }}" class="dlp-variant-select">
+          {% for variant in current_product.variants %}
+            <option value="{{ variant.id }}"{% if variant.id == selected_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      {% if current_product.variants.size > 0 %}
+        <div class="dlp-bundles">
+          <p>Bundles exclusifs</p>
+          <div class="dlp-bundles__grid">
+            {% for variant in current_product.variants limit:3 %}
+              <button type="button" class="dlp-bundle{% if variant.id == selected_variant.id %} is-active{% endif %}" data-variant-id="{{ variant.id }}" aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}">
+                <span class="dlp-bundle__title">{{ variant.title }}</span>
+                <span class="dlp-bundle__price">{{ variant.price | money_without_trailing_zeros }}</span>
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="dlp-bundle__compare">{{ variant.compare_at_price | money_without_trailing_zeros }}</span>
+                {% endif %}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="dlp-urgency">
+        <div class="dlp-stock" data-stock-root>
+          <span class="dlp-stock__label" data-stock-label>Stock faible</span>
+          <div class="dlp-stock__bar">
+            <span class="dlp-stock__fill" data-stock-bar></span>
+          </div>
+          <p class="dlp-stock__count">Plus que <strong data-stock-left>12</strong> pièces disponibles aujourd’hui.</p>
+        </div>
+        <div class="dlp-timer">
+          <span class="dlp-timer__label">Offre se termine à 23h59</span>
+          <span class="dlp-timer__value" data-midnight-timer>00:00:00</span>
+        </div>
+      </div>
+      <form class="dlp-form" data-product-form data-variant-id="{{ selected_variant.id }}">
+        <input type="hidden" name="id" value="{{ selected_variant.id }}">
+        <div class="dlp-quantity">
+          <button type="button" class="dlp-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" name="quantity" value="1" min="1" aria-label="Quantité">
+          <button type="button" class="dlp-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="submit" class="dlp-btn dlp-btn--primary dlp-btn--full">
+          Commander maintenant
+        </button>
+      </form>
+      <div class="dlp-badges">
+        <span>✔ Paiement à la livraison</span>
+        <span>✔ Livraison 24-48h Maroc</span>
+        <span>✔ Support WhatsApp dédié</span>
+        <span>✔ Garantie satisfait ou remboursé 30 jours</span>
+      </div>
+      <div class="dlp-feedback" data-feedback aria-live="polite">En stock – expédition immédiate</div>
+    </div>
+  </div>
+  <div class="dlp-product__why" data-animate>
+    <h2>Pourquoi choisir le Nettoyeur Dentaire Électrique ?</h2>
+    <div class="dlp-product__why-grid">
+      <img src="{{ 'nettoyeur-2.png' | file_url }}" alt="Embouts du nettoyeur Denti Luxe" loading="lazy">
+      <ul>
+        <li>5 modes intelligents pour s’adapter à chaque sensibilité.</li>
+        <li>Vibration ultrasonique 11 000 tr/min pour éliminer le tartre.</li>
+        <li>Batterie longue durée et recharge USB.</li>
+        <li>Embouts interchangeables pour toute la famille.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="dlp-product__how" data-animate>
+    <h2>Comment l’utiliser ?</h2>
+    <div class="dlp-product__how-grid">
+      <img src="{{ 'nettoyeur-3.png' | file_url }}" alt="Tutoriel utilisation nettoyeur Denti Luxe" loading="lazy">
+      <ol>
+        <li>Choisissez l’embout adapté et fixez-le sur l’appareil.</li>
+        <li>Sélectionnez l’intensité idéale parmi les 5 modes.</li>
+        <li>Glissez l’embout sur les zones à traiter, puis rincez.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="dlp-product__reviews" data-animate>
+    <h2>Avis clients</h2>
+    <div class="dlp-review-cards">
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Mes dents sont plus lisses dès la première utilisation. »</p>
+        <span>Youssef – Agadir</span>
+      </article>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Très simple à utiliser, bye bye les taches de café. »</p>
+        <span>Chaimae – Casablanca</span>
+      </article>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Autonomie impressionnante, je le prends en voyage. »</p>
+        <span>Karim – Fès</span>
+      </article>
+    </div>
+  </div>
+</section>

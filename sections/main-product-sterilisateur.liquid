@@ -1,0 +1,153 @@
+{% assign current_product = product %}
+{% assign selected_variant = current_product.selected_or_first_available_variant | default: current_product.variants.first %}
+{% capture variant_payload %}
+[
+  {% for variant in current_product.variants %}
+    {
+      "id": {{ variant.id }},
+      "title": {{ variant.title | json }},
+      "price_formatted": {{ variant.price | money_without_trailing_zeros | json }},
+      "compare_formatted": {{ variant.compare_at_price | money_without_trailing_zeros | json }},
+      "price_value": {{ variant.price }},
+      "compare_value": {{ variant.compare_at_price | default: 0 }},
+      "available": {{ variant.available | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+{% endcapture %}
+<section class="dlp-product dlp-product--sterilisateur" data-product-root data-selected-variant="{{ selected_variant.id }}" data-variants='{{ variant_payload | strip_newlines | replace: "'", "&#39;" }}'>
+  <div class="dlp-product__layout">
+    <div class="dlp-product__media" data-animate>
+      <div class="dlp-carousel" data-carousel>
+        <button type="button" class="dlp-prev" aria-label="Image précédente">‹</button>
+        <div class="dlp-track">
+          <div class="dlp-slide">
+            <img src="{{ 'sterilisateur-1.png' | file_url }}" alt="Stérilisateur intelligent Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'sterilisateur-2.png' | file_url }}" alt="Vue latérale du stérilisateur" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'sterilisateur-3.png' | file_url }}" alt="Stérilisateur ouvert" loading="lazy">
+          </div>
+        </div>
+        <button type="button" class="dlp-next" aria-label="Image suivante">›</button>
+        <div class="dlp-dots" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="dlp-product__info" data-animate>
+      <header class="dlp-product__header">
+        <p class="dlp-product__tag">Hygiène intelligente UV-C</p>
+        <h1>{{ current_product.title | default: 'Stérilisateur Intelligent' }}</h1>
+        <p class="dlp-product__subtitle">Éliminez 99,9 % des bactéries en 5 minutes grâce à la technologie UV-C certifiée, pour une brosse à dents toujours saine.</p>
+        <div class="dlp-product__rating">
+          <span aria-label="Note 5 sur 5">★★★★★</span>
+          <span>4,9/5 (154 avis)</span>
+        </div>
+      </header>
+      <div class="dlp-price">
+        <span class="dlp-price__compare" data-compare{% unless selected_variant.compare_at_price > selected_variant.price %} hidden{% endunless %}>{{ selected_variant.compare_at_price | money_without_trailing_zeros }}</span>
+        <span class="dlp-price__current" data-price>{{ selected_variant.price | money_without_trailing_zeros }}</span>
+      </div>
+      {% if current_product.variants.size > 1 %}
+        <label class="dlp-variant-label" for="dlp-variant-{{ section.id }}">Sélectionnez votre option</label>
+        <select id="dlp-variant-{{ section.id }}" class="dlp-variant-select">
+          {% for variant in current_product.variants %}
+            <option value="{{ variant.id }}"{% if variant.id == selected_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      {% if current_product.variants.size > 0 %}
+        <div class="dlp-bundles">
+          <p>Bundles exclusifs</p>
+          <div class="dlp-bundles__grid">
+            {% for variant in current_product.variants limit:3 %}
+              <button type="button" class="dlp-bundle{% if variant.id == selected_variant.id %} is-active{% endif %}" data-variant-id="{{ variant.id }}" aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}">
+                <span class="dlp-bundle__title">{{ variant.title }}</span>
+                <span class="dlp-bundle__price">{{ variant.price | money_without_trailing_zeros }}</span>
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="dlp-bundle__compare">{{ variant.compare_at_price | money_without_trailing_zeros }}</span>
+                {% endif %}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="dlp-urgency">
+        <div class="dlp-stock" data-stock-root>
+          <span class="dlp-stock__label" data-stock-label>Stock faible</span>
+          <div class="dlp-stock__bar">
+            <span class="dlp-stock__fill" data-stock-bar></span>
+          </div>
+          <p class="dlp-stock__count">Plus que <strong data-stock-left>12</strong> unités disponibles aujourd’hui.</p>
+        </div>
+        <div class="dlp-timer">
+          <span class="dlp-timer__label">Offre se termine à 23h59</span>
+          <span class="dlp-timer__value" data-midnight-timer>00:00:00</span>
+        </div>
+      </div>
+      <form class="dlp-form" data-product-form data-variant-id="{{ selected_variant.id }}">
+        <input type="hidden" name="id" value="{{ selected_variant.id }}">
+        <div class="dlp-quantity">
+          <button type="button" class="dlp-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" name="quantity" value="1" min="1" aria-label="Quantité">
+          <button type="button" class="dlp-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+        </div>
+        <button type="submit" class="dlp-btn dlp-btn--primary dlp-btn--full">
+          Commander maintenant
+        </button>
+      </form>
+      <div class="dlp-badges">
+        <span>✔ Paiement à la livraison</span>
+        <span>✔ Livraison 24-48h Maroc</span>
+        <span>✔ Support WhatsApp dédié</span>
+        <span>✔ Garantie satisfait ou remboursé 30 jours</span>
+      </div>
+      <div class="dlp-feedback" data-feedback aria-live="polite">En stock – expédition immédiate</div>
+    </div>
+  </div>
+  <div class="dlp-product__why" data-animate>
+    <img class="dlp-product__why-visual" src="{{ 'vision-sterilisateur.png' | file_url }}" alt="Vue détaillée du stérilisateur Denti Luxe" loading="lazy">
+    <h2>Pourquoi choisir le Stérilisateur Intelligent ?</h2>
+    <div class="dlp-product__why-grid">
+      <ul>
+        <li>Technologie UV-C certifiée pour éliminer 99,9 % des bactéries.</li>
+        <li>Capteur intelligent : activation automatique à la fermeture.</li>
+        <li>Recharge USB-C avec autonomie de 30 jours.</li>
+        <li>Design compact compatible avec toutes les brosses à dents.</li>
+      </ul>
+      <img src="{{ 'sterilisateur-3.png' | file_url }}" alt="Détails du stérilisateur Denti Luxe" loading="lazy">
+    </div>
+  </div>
+  <div class="dlp-product__how" data-animate>
+    <h2>Comment l’utiliser ?</h2>
+    <div class="dlp-product__how-grid">
+      <img src="{{ 'utiliser-sterilisateur.png' | file_url }}" alt="Tutoriel utilisation stérilisateur Denti Luxe" loading="lazy">
+      <ol>
+        <li>Placez votre brosse à dents dans le compartiment.</li>
+        <li>Fermez le couvercle : la lumière UV-C s’active automatiquement.</li>
+        <li>Attendez 5 minutes pour une stérilisation optimale.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="dlp-product__reviews" data-animate>
+    <h2>Avis clients</h2>
+    <div class="dlp-review-cards">
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Je pars en voyage avec, ma brosse reste impeccable. »</p>
+        <span>Nadia – Tanger</span>
+      </article>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Installation facile dans ma salle de bain, design premium. »</p>
+        <span>Omar – Rabat</span>
+      </article>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Idéal pour toute la famille, plus de mauvaises odeurs. »</p>
+        <span>Soukaina – Casablanca</span>
+      </article>
+    </div>
+  </div>
+</section>
