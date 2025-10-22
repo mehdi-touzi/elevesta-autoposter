@@ -39,7 +39,7 @@
           <span></span>
         </button>
       </div>
-      <div class="dlp-mobile" id="dlp-mobile-menu" hidden>
+      <div class="dlp-mobile" id="dlp-mobile-menu" hidden aria-hidden="true">
         <a class="dlp-mobile__link" href="/">Accueil</a>
         <a class="dlp-mobile__link" href="/products/kit-led-denti-luxe">Kit LED</a>
         <a class="dlp-mobile__link" href="/products/sterilisateur-intelligent-de-brosses-a-dents-uv-smart-toothbrush-sanitizer">Stérilisateur</a>
@@ -195,24 +195,110 @@
       const dentiReady = () => {
         const navToggle = document.querySelector('.dlp-nav__toggle');
         const mobileMenu = document.getElementById('dlp-mobile-menu');
+        const header = document.querySelector('[data-dlp-header]');
         if (navToggle && mobileMenu) {
-          const closeMenu = () => {
+          const body = document.body;
+          const isMenuOpen = () => navToggle.getAttribute('aria-expanded') === 'true';
+          const setHiddenState = (hide) => {
+            if (hide) {
+              mobileMenu.setAttribute('aria-hidden', 'true');
+              mobileMenu.classList.remove('is-open');
+              const onTransitionEnd = (event) => {
+                if (event.target === mobileMenu && !mobileMenu.classList.contains('is-open')) {
+                  mobileMenu.hidden = true;
+                  mobileMenu.removeEventListener('transitionend', onTransitionEnd);
+                }
+              };
+              if (!mobileMenu.hidden) {
+                mobileMenu.addEventListener('transitionend', onTransitionEnd);
+              } else {
+                mobileMenu.hidden = true;
+              }
+              body.classList.remove('dlp-menu-open');
+            } else {
+              mobileMenu.hidden = false;
+              mobileMenu.setAttribute('aria-hidden', 'false');
+              requestAnimationFrame(() => {
+                mobileMenu.classList.add('is-open');
+              });
+              body.classList.add('dlp-menu-open');
+            }
+          };
+          const closeMenu = (immediate = false) => {
+            if (!isMenuOpen() && !immediate) return;
             navToggle.setAttribute('aria-expanded', 'false');
             navToggle.classList.remove('is-active');
-            mobileMenu.hidden = true;
+            navToggle.setAttribute('aria-label', 'Ouvrir le menu');
+            if (immediate) {
+              mobileMenu.classList.remove('is-open');
+              mobileMenu.hidden = true;
+              mobileMenu.setAttribute('aria-hidden', 'true');
+              body.classList.remove('dlp-menu-open');
+            } else {
+              setHiddenState(true);
+            }
+          };
+          const openMenu = () => {
+            if (isMenuOpen()) return;
+            navToggle.setAttribute('aria-expanded', 'true');
+            navToggle.classList.add('is-active');
+            navToggle.setAttribute('aria-label', 'Fermer le menu');
+            header?.classList.remove('is-hidden');
+            setHiddenState(false);
           };
           navToggle.addEventListener('click', () => {
-            const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
-            if (isOpen) {
+            if (isMenuOpen()) {
               closeMenu();
             } else {
-              navToggle.setAttribute('aria-expanded', 'true');
-              navToggle.classList.add('is-active');
-              mobileMenu.hidden = false;
+              openMenu();
             }
           });
           mobileMenu.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', closeMenu);
+            link.addEventListener('click', () => closeMenu());
+          });
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && isMenuOpen()) {
+              closeMenu();
+            }
+          });
+          window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
+              closeMenu(true);
+            }
+          });
+          window.addEventListener('scroll', () => {
+            if (isMenuOpen()) {
+              closeMenu();
+            }
+          });
+        }
+
+        if (header) {
+          let lastScroll = window.scrollY;
+          let ticking = false;
+          const handleScroll = () => {
+            const current = window.scrollY;
+            const scrolledEnough = current > 120;
+            const scrollingDown = current > lastScroll + 6;
+            const scrollingUp = current < lastScroll - 6;
+            if (scrolledEnough && scrollingDown) {
+              header.classList.add('is-hidden');
+            } else if (scrollingUp || current <= 12) {
+              header.classList.remove('is-hidden');
+            }
+            if (current > 12) {
+              header.classList.add('has-shadow');
+            } else {
+              header.classList.remove('has-shadow');
+            }
+            lastScroll = current;
+            ticking = false;
+          };
+          window.addEventListener('scroll', () => {
+            if (!ticking) {
+              window.requestAnimationFrame(handleScroll);
+              ticking = true;
+            }
           });
         }
 
@@ -475,7 +561,7 @@
               feedback.dataset.state = 'loading';
             }
             try {
-              const response = await fetch('/cart/add.js', {
+              const response = await fetch('/cart/add.json', {
                 method: 'POST',
                 body: formData
               });
@@ -483,10 +569,10 @@
                 throw new Error('Erreur panier');
               }
               if (feedback) {
-                feedback.textContent = 'Produit ajouté. Redirection vers le paiement…';
+                feedback.textContent = 'Produit ajouté. Redirection vers le panier…';
                 feedback.dataset.state = 'success';
               }
-              window.location.href = '/checkout';
+              window.location.href = '/cart';
             } catch (error) {
               if (feedback) {
                 feedback.textContent = 'Impossible d’ajouter le produit. Merci de réessayer.';

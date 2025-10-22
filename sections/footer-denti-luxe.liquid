@@ -3,16 +3,24 @@
     <a class="dlp-footer__logo" href="/" aria-label="Retour à l’accueil Denti Luxe">
       <img src="{{ 'logo-denti-luxe.jpg' | file_url }}" alt="Logo Denti Luxe" loading="lazy">
     </a>
-    <nav class="dlp-footer__links" aria-label="Liens légaux">
-      <a href="/pages/mentions-legales">Mentions légales</a>
-      <a href="/pages/politique-de-retour">Politique de retour (30 jours)</a>
-      <a href="/pages/politique-d-expedition">Politique d’expédition</a>
-      <a href="/pages/conditions-de-service">Conditions de service</a>
-    </nav>
-    <div class="dlp-footer__meta">
-      <a href="https://wa.me/212600000000" class="dlp-footer__contact">WhatsApp</a>
-      <a href="https://www.instagram.com" class="dlp-footer__contact">Instagram</a>
+    <div class="dlp-footer__grid">
+      <div class="dlp-footer__column" aria-label="Liens légaux">
+        <h3>Informations</h3>
+        <ul class="dlp-footer__links">
+          <li>🦷 <a href="/pages/mentions-legales">Mentions légales</a></li>
+          <li>📦 <a href="/pages/politique-d-expedition">Politique d’expédition</a></li>
+          <li>🔁 <a href="/pages/politique-de-retour">Politique de retour (30 jours)</a></li>
+          <li>📜 <a href="/pages/conditions-de-service">Conditions de service</a></li>
+        </ul>
+      </div>
+      <div class="dlp-footer__column" aria-label="Réseaux sociaux et contact">
+        <h3>Contact & réseaux</h3>
+        <ul class="dlp-footer__links">
+          <li>📸 <a href="https://www.instagram.com/denti_luxe1/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li>💬 <a href="https://wa.me/212772207947" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+      </div>
     </div>
-    <p class="dlp-footer__copy">© {{ 'now' | date: '%Y' }} Denti Luxe – L’excellence du sourire commence ici.</p>
+    <p class="dlp-footer__copy">© 2025 Denti Luxe — L’excellence du sourire commence ici.</p>
   </div>
 </footer>
