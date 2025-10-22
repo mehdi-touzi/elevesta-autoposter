@@ -1,55 +1,18 @@
-<footer class="denti-footer" role="contentinfo">
-  <div class="denti-footer__top">
-    <div class="denti-footer__brand">
-      <span class="denti-logo__icon denti-logo__icon--footer">DL</span>
-      <div>
-        <p class="denti-footer__title">Denti Luxe</p>
-        <p class="denti-footer__subtitle">L’excellence du sourire commence ici</p>
-      </div>
+<footer class="dlp-footer" role="contentinfo">
+  <div class="dlp-footer__inner">
+    <a class="dlp-footer__logo" href="/" aria-label="Retour à l’accueil Denti Luxe">
+      <img src="{{ 'logo-denti-luxe.jpg' | file_url }}" alt="Logo Denti Luxe" loading="lazy">
+    </a>
+    <nav class="dlp-footer__links" aria-label="Liens légaux">
+      <a href="/pages/mentions-legales">Mentions légales</a>
+      <a href="/pages/politique-de-retour">Politique de retour (30 jours)</a>
+      <a href="/pages/politique-d-expedition">Politique d’expédition</a>
+      <a href="/pages/conditions-de-service">Conditions de service</a>
+    </nav>
+    <div class="dlp-footer__meta">
+      <a href="https://wa.me/212600000000" class="dlp-footer__contact">WhatsApp</a>
+      <a href="https://www.instagram.com" class="dlp-footer__contact">Instagram</a>
     </div>
-    <div class="denti-footer__cta">
-      <p>Besoin d’aide pour choisir ? Notre équipe vous répond sur WhatsApp.</p>
-      <a class="denti-btn denti-btn--glow" href="https://wa.me/212600000000" target="_blank" rel="noopener">Parler sur WhatsApp</a>
-    </div>
-  </div>
-  <div class="denti-footer__grid">
-    <div>
-      <h3>Contact</h3>
-      <ul>
-        <li><a href="mailto:hello@dentiluxe.ma">hello@dentiluxe.ma</a></li>
-        <li><a href="tel:+212600000000">+212 6 00 00 00 00</a></li>
-        <li>Livraison partout au Maroc</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Légal</h3>
-      <ul>
-        <li><a href="/policies/legal-notice">Mentions légales</a></li>
-        <li><a href="/policies/refund-policy">Politique de retour</a></li>
-        <li><a href="/policies/shipping-policy">Politique d’expédition</a></li>
-        <li><a href="/policies/terms-of-service">Conditions de service</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Suivez-nous</h3>
-      <ul class="denti-footer__social">
-        <li><a href="https://www.instagram.com/dentiluxe" target="_blank" rel="noopener">Instagram</a></li>
-        <li><a href="https://www.facebook.com/dentiluxe" target="_blank" rel="noopener">Facebook</a></li>
-        <li><a href="https://www.tiktok.com/@dentiluxe" target="_blank" rel="noopener">TikTok</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3>Paiement sécurisé</h3>
-      <p>Paiement à la livraison (COD) &amp; cartes marocaines acceptées.</p>
-      <div class="denti-footer__payments">
-        <span>💳</span>
-        <span>🚚</span>
-        <span>🛡️</span>
-      </div>
-    </div>
-  </div>
-  <div class="denti-footer__bottom">
-    <p>&copy; {{ 'now' | date: '%Y' }} Denti Luxe. Tous droits réservés.</p>
-    <p>Devise : Dirham marocain (MAD) — Livraison 24-48h.</p>
+    <p class="dlp-footer__copy">© {{ 'now' | date: '%Y' }} Denti Luxe – L’excellence du sourire commence ici.</p>
   </div>
 </footer>

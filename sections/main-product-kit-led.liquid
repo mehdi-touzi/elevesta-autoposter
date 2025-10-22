@@ -1,103 +1,157 @@
-{% assign current_variant = product.selected_or_first_available_variant | default: product.variants.first %}
-<section class="denti-product denti-product--kit">
-  <div class="denti-product__grid">
-    <div class="denti-product__gallery" data-animate="fade">
-      <div class="denti-gallery" data-gallery>
-        <button class="denti-gallery__control denti-gallery__control--prev" type="button" aria-label="Image précédente">‹</button>
-        <div class="denti-gallery__track">
-          <img src="{{ 'kit-led-1.png' | asset_url }}" alt="Kit LED Denti Luxe" class="is-active" loading="lazy">
-          <img src="{{ 'kit-led-2.png' | asset_url }}" alt="Kit LED Denti Luxe accessoires" loading="lazy">
-          <img src="{{ 'kit-led-3.png' | asset_url }}" alt="Kit LED Denti Luxe en action" loading="lazy">
-          <img src="{{ 'kit-before.png' | asset_url }}" alt="Avant Denti Luxe" loading="lazy">
-          <img src="{{ 'kit-after.png' | asset_url }}" alt="Après Denti Luxe" loading="lazy">
+{% assign current_product = product %}
+{% assign selected_variant = current_product.selected_or_first_available_variant | default: current_product.variants.first %}
+{% capture variant_payload %}
+[
+  {% for variant in current_product.variants %}
+    {
+      "id": {{ variant.id }},
+      "title": {{ variant.title | json }},
+      "price_formatted": {{ variant.price | money_without_trailing_zeros | json }},
+      "compare_formatted": {{ variant.compare_at_price | money_without_trailing_zeros | json }},
+      "price_value": {{ variant.price }},
+      "compare_value": {{ variant.compare_at_price | default: 0 }},
+      "available": {{ variant.available | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+{% endcapture %}
+<section class="dlp-product dlp-product--kit" data-product-root data-selected-variant="{{ selected_variant.id }}" data-variants='{{ variant_payload | strip_newlines | replace: "'", "&#39;" }}'>
+  <div class="dlp-product__layout">
+    <div class="dlp-product__media" data-animate>
+      <div class="dlp-carousel" data-carousel>
+        <button type="button" class="dlp-prev" aria-label="Image précédente">‹</button>
+        <div class="dlp-track">
+          <div class="dlp-slide">
+            <img src="{{ 'kit-led-1.png' | file_url }}" alt="Kit LED Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'kit-led-2.png' | file_url }}" alt="Accessoires du Kit LED Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'kit-led-3.png' | file_url }}" alt="Application du Kit LED Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'kit-before.png' | file_url }}" alt="Avant utilisation du Kit LED Denti Luxe" loading="lazy">
+          </div>
+          <div class="dlp-slide">
+            <img src="{{ 'kit-after.png' | file_url }}" alt="Après utilisation du Kit LED Denti Luxe" loading="lazy">
+          </div>
         </div>
-        <button class="denti-gallery__control denti-gallery__control--next" type="button" aria-label="Image suivante">›</button>
+        <button type="button" class="dlp-next" aria-label="Image suivante">›</button>
+        <div class="dlp-dots" aria-hidden="true"></div>
       </div>
     </div>
-    <div class="denti-product__details" data-animate="fade">
-      <h1>{{ product.title | default: 'Kit LED Denti Luxe' }}</h1>
-      <p class="denti-product__subtitle">Blanchiment dentaire professionnel à domicile avec technologie LED froide et gel sans sensibilité.</p>
-      <div class="denti-product__ratings">
-        <span aria-label="Note 5 sur 5">★★★★★</span>
-        <span>4,9/5 (198 avis)</span>
-      </div>
-      <div class="denti-product__price">
-        <span class="denti-product__compare" data-product-compare>429 DH</span>
-        <span class="denti-product__current" data-product-price>299 DH</span>
-      </div>
-      <div class="denti-product__urgency">
-        <div class="denti-product__timer" data-countdown>15:00</div>
-        <div class="denti-product__progress">
-          <div class="denti-product__progress-bar" data-stock-bar></div>
+    <div class="dlp-product__info" data-animate>
+      <header class="dlp-product__header">
+        <p class="dlp-product__tag">Blanchiment LED professionnel</p>
+        <h1>{{ current_product.title | default: 'Kit LED Denti Luxe' }}</h1>
+        <p class="dlp-product__subtitle">Notre technologie LED froide active un gel formulé par des dentistes pour gagner jusqu’à 3 teintes dès la première semaine, sans sensibilité.</p>
+        <div class="dlp-product__rating">
+          <span aria-label="Note 5 sur 5">★★★★★</span>
+          <span>4,9/5 (198 avis)</span>
         </div>
-        <span class="denti-product__stock" data-stock-label>Stock très limité</span>
-        <span class="denti-product__stock-count">Il reste <strong data-stock-left>12</strong> kits aujourd'hui</span>
+      </header>
+      <div class="dlp-price">
+        <span class="dlp-price__compare" data-compare{% unless selected_variant.compare_at_price > selected_variant.price %} hidden{% endunless %}>{{ selected_variant.compare_at_price | money_without_trailing_zeros }}</span>
+        <span class="dlp-price__current" data-price>{{ selected_variant.price | money_without_trailing_zeros }}</span>
       </div>
-      <div class="denti-bundle">
-        <p>Choisissez votre offre</p>
-        <div class="denti-bundle__options">
-          <button type="button" class="denti-bundle__option is-active" data-price="299 DH" data-compare="429 DH" data-quantity="1" data-offer-label="Offre Solo - 1 Kit">1 Kit – 299 DH</button>
-          <button type="button" class="denti-bundle__option" data-price="549 DH" data-compare="858 DH" data-quantity="2" data-offer-label="Offre Duo - 2 Kits">2 Kits – 549 DH</button>
-          <button type="button" class="denti-bundle__option" data-price="749 DH" data-compare="1 287 DH" data-quantity="3" data-offer-label="Offre Famille - 3 Kits">3 Kits – 749 DH</button>
+      {% if current_product.variants.size > 1 %}
+        <label class="dlp-variant-label" for="dlp-variant-{{ section.id }}">Sélectionnez votre option</label>
+        <select id="dlp-variant-{{ section.id }}" class="dlp-variant-select">
+          {% for variant in current_product.variants %}
+            <option value="{{ variant.id }}"{% if variant.id == selected_variant.id %} selected{% endif %}{% unless variant.available %} disabled{% endunless %}>{{ variant.title }}</option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      {% if current_product.variants.size > 0 %}
+        <div class="dlp-bundles">
+          <p>Bundles exclusifs</p>
+          <div class="dlp-bundles__grid">
+            {% for variant in current_product.variants limit:3 %}
+              <button type="button" class="dlp-bundle{% if variant.id == selected_variant.id %} is-active{% endif %}" data-variant-id="{{ variant.id }}" aria-pressed="{% if variant.id == selected_variant.id %}true{% else %}false{% endif %}">
+                <span class="dlp-bundle__title">{{ variant.title }}</span>
+                <span class="dlp-bundle__price">{{ variant.price | money_without_trailing_zeros }}</span>
+                {% if variant.compare_at_price > variant.price %}
+                  <span class="dlp-bundle__compare">{{ variant.compare_at_price | money_without_trailing_zeros }}</span>
+                {% endif %}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="dlp-urgency">
+        <div class="dlp-stock" data-stock-root>
+          <span class="dlp-stock__label" data-stock-label>Stock faible</span>
+          <div class="dlp-stock__bar">
+            <span class="dlp-stock__fill" data-stock-bar></span>
+          </div>
+          <p class="dlp-stock__count">Plus que <strong data-stock-left>12</strong> kits disponibles aujourd’hui.</p>
+        </div>
+        <div class="dlp-timer">
+          <span class="dlp-timer__label">Offre se termine à 23h59</span>
+          <span class="dlp-timer__value" data-midnight-timer>00:00:00</span>
         </div>
       </div>
-      <form class="denti-form" data-variant-id="{{ current_variant.id }}">
-        <input type="hidden" name="id" value="{{ current_variant.id }}">
-        <input type="hidden" name="properties[Offre]" value="Offre Solo - 1 Kit">
-        <div class="denti-form__quantity">
-          <button type="button" class="denti-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
-          <input type="number" min="1" value="1" name="quantity" aria-label="Quantité">
-          <button type="button" class="denti-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
+      <form class="dlp-form" data-product-form data-variant-id="{{ selected_variant.id }}">
+        <input type="hidden" name="id" value="{{ selected_variant.id }}">
+        <div class="dlp-quantity">
+          <button type="button" class="dlp-qty" data-qty-down aria-label="Diminuer la quantité">−</button>
+          <input type="number" name="quantity" value="1" min="1" aria-label="Quantité">
+          <button type="button" class="dlp-qty" data-qty-up aria-label="Augmenter la quantité">+</button>
         </div>
-        <button type="submit" class="denti-btn denti-btn--primary denti-btn--full">
+        <button type="submit" class="dlp-btn dlp-btn--primary dlp-btn--full">
           Commander maintenant
         </button>
       </form>
-      <div class="denti-product__assurances">
-        <p>✔️ Paiement à la livraison</p>
-        <p>✔️ Livraison 24-48h partout au Maroc</p>
-        <p>✔️ Garantie satisfait ou remboursé 30 jours</p>
+      <div class="dlp-badges">
+        <span>✔ Paiement à la livraison</span>
+        <span>✔ Livraison 24-48h Maroc</span>
+        <span>✔ Support WhatsApp dédié</span>
+        <span>✔ Garantie satisfait ou remboursé 30 jours</span>
       </div>
+      <div class="dlp-feedback" data-feedback aria-live="polite">En stock – expédition immédiate</div>
     </div>
   </div>
-  <div class="denti-product__why" data-animate="fade">
-    <h2>Pourquoi choisir Denti Luxe ?</h2>
-    <div class="denti-product__why-grid">
-      <img src="{{ 'kit-led-3.png' | asset_url }}" alt="Pourquoi choisir le Kit LED Denti Luxe" loading="lazy">
+  <div class="dlp-product__why" data-animate>
+    <h2>Pourquoi choisir le Kit LED Denti Luxe ?</h2>
+    <div class="dlp-product__why-grid">
+      <img src="{{ 'choisir-kit.png' | file_url }}" alt="Arguments Kit LED Denti Luxe" loading="lazy">
       <ul>
-        <li>Lumière LED froide à haute intensité pour un blanchiment uniforme.</li>
-        <li>Gel formulé par des dentistes, sans peroxyde agressif.</li>
-        <li>Résultats visibles dès la première semaine.</li>
-        <li>Application ergonomique avec gouttière flexible.</li>
+        <li>Lumière LED froide professionnelle pour un éclat uniforme.</li>
+        <li>Gel sans peroxyde agressif, approuvé par des dentistes marocains.</li>
+        <li>Résultats visibles dès la première semaine d’utilisation.</li>
+        <li>Embout ergonomique et confortable, idéal pour un usage quotidien.</li>
       </ul>
     </div>
   </div>
-  <div class="denti-product__reviews" data-animate="fade">
-    <h2>Avis clients (4,9/5)</h2>
-    <div class="denti-reviews__grid">
-      <article class="denti-review">
-        <img src="{{ 'kit-after.png' | asset_url }}" alt="Résultat client Denti Luxe" loading="lazy">
-        <div>
-          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
-          <p>« Mon sourire n’a jamais été aussi lumineux, j’ai gagné 3 teintes ! »</p>
-          <span class="denti-review__author">— Hajar, Casablanca</span>
-        </div>
+  <div class="dlp-product__how" data-animate>
+    <h2>Comment utiliser le kit ?</h2>
+    <div class="dlp-product__how-grid">
+      <img src="{{ 'utiliser-kit.png' | file_url }}" alt="Tutoriel utilisation Kit LED Denti Luxe" loading="lazy">
+      <ol>
+        <li>Appliquez le gel blanchissant sur la gouttière.</li>
+        <li>Placez la gouttière et activez la lumière LED pendant 10 minutes.</li>
+        <li>Rincez votre bouche et répétez la routine pendant 7 jours.</li>
+      </ol>
+    </div>
+  </div>
+  <div class="dlp-product__reviews" data-animate>
+    <h2>Avis clients</h2>
+    <div class="dlp-review-cards">
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« J’ai gagné 3 teintes en une semaine, zéro sensibilité. »</p>
+        <span>Hajar – Casablanca</span>
       </article>
-      <article class="denti-review">
-        <img src="{{ 'review-2.png' | asset_url }}" alt="Avis client sur le kit" loading="lazy">
-        <div>
-          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
-          <p>« Aucun inconfort, le résultat est visible dès la deuxième utilisation. »</p>
-          <span class="denti-review__author">— Lina, Rabat</span>
-        </div>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Packaging premium, livraison ultra rapide. »</p>
+        <span>Imane – Rabat</span>
       </article>
-      <article class="denti-review">
-        <img src="{{ 'review-3.png' | asset_url }}" alt="Témoignage client Denti Luxe" loading="lazy">
-        <div>
-          <div class="denti-review__stars" aria-label="Note 5 sur 5">★★★★★</div>
-          <p>« Packaging premium, service client réactif, je recommande. »</p>
-          <span class="denti-review__author">— Amal, Marrakech</span>
-        </div>
+      <article>
+        <span aria-label="Note 5 sur 5">★★★★★</span>
+        <p>« Service client WhatsApp au top, j’adore mon sourire. »</p>
+        <span>Mehdi – Marrakech</span>
       </article>
     </div>
   </div>

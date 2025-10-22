@@ -5,174 +5,179 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="#004A7C">
     <title>{% if page_title %}{{ page_title }} – Denti Luxe{% else %}Denti Luxe – L’excellence du sourire commence ici{% endif %}</title>
-    <meta name="description" content="Découvrez Denti Luxe : des solutions premium de blanchiment et d’hygiène dentaire au Maroc, livraison rapide et paiement à la livraison."/>
+    <meta name="description" content="Denti Luxe – solutions premium de blanchiment et d'hygiène dentaire au Maroc avec paiement à la livraison." />
     {{ content_for_header }}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="{{ 'logo-denti-luxe.jpg' | file_url }}">
     <link rel="stylesheet" href="{{ 'style-denti.css' | asset_url }}" media="all">
   </head>
   <body class="template-{{ template | replace: '.', '-' }}">
-    <a class="skip-to-content-link" href="#MainContent">Aller au contenu</a>
-    <header class="denti-header">
-      <div class="denti-header__inner">
-        <div class="denti-logo">
-          <span class="denti-logo__icon">DL</span>
-          <div class="denti-logo__text">
-            <span class="denti-logo__brand">Denti Luxe</span>
-            <span class="denti-logo__tagline">L’excellence du sourire commence ici</span>
-          </div>
-        </div>
-        <nav class="denti-nav" aria-label="Navigation principale">
-          <a href="/" class="denti-nav__link">Accueil</a>
-          <a href="/products/kit-led-denti-luxe" class="denti-nav__link">Kit LED</a>
-          <a href="/products/sterilisateur-intelligent" class="denti-nav__link">Stérilisateur</a>
-          <a href="/products/nettoyeur-dentaire-electrique" class="denti-nav__link">Nettoyeur</a>
-          <a href="/pages/contact" class="denti-nav__cta">Contact</a>
+    <a class="dlp-skip" href="#MainContent">Passer au contenu</a>
+    <header class="dlp-header" data-dlp-header>
+      <div class="dlp-header__inner">
+        <a class="dlp-header__brand" href="/" aria-label="Denti Luxe – retour à l'accueil">
+          <span class="dlp-header__monogram">DL</span>
+          <span class="dlp-header__text">
+            <span class="dlp-header__title">Denti Luxe</span>
+            <span class="dlp-header__subtitle">L’excellence du sourire commence ici</span>
+          </span>
+        </a>
+        <nav class="dlp-nav" aria-label="Navigation principale">
+          <a class="dlp-nav__link" href="/">Accueil</a>
+          <a class="dlp-nav__link" href="/products/kit-led-denti-luxe">Kit LED</a>
+          <a class="dlp-nav__link" href="/products/sterilisateur-intelligent-de-brosses-a-dents-uv-smart-toothbrush-sanitizer">Stérilisateur</a>
+          <a class="dlp-nav__link" href="/products/nettoyeur-dentaire-electrique">Nettoyeur</a>
+          <a class="dlp-nav__cta" href="/pages/contact">Contact</a>
         </nav>
-        <button class="denti-nav__toggle" aria-controls="mobile-menu" aria-expanded="false">
-          <span></span><span></span><span></span>
+        <button class="dlp-nav__toggle" type="button" aria-controls="dlp-mobile-menu" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span></span>
+          <span></span>
+          <span></span>
         </button>
       </div>
-      <div id="mobile-menu" class="denti-mobile-menu" hidden>
-        <a href="/" class="denti-mobile-menu__link">Accueil</a>
-        <a href="/products/kit-led-denti-luxe" class="denti-mobile-menu__link">Kit LED</a>
-        <a href="/products/sterilisateur-intelligent" class="denti-mobile-menu__link">Stérilisateur</a>
-        <a href="/products/nettoyeur-dentaire-electrique" class="denti-mobile-menu__link">Nettoyeur</a>
-        <a href="/pages/contact" class="denti-mobile-menu__link denti-mobile-menu__link--cta">Contact</a>
+      <div class="dlp-mobile" id="dlp-mobile-menu" hidden>
+        <a class="dlp-mobile__link" href="/">Accueil</a>
+        <a class="dlp-mobile__link" href="/products/kit-led-denti-luxe">Kit LED</a>
+        <a class="dlp-mobile__link" href="/products/sterilisateur-intelligent-de-brosses-a-dents-uv-smart-toothbrush-sanitizer">Stérilisateur</a>
+        <a class="dlp-mobile__link" href="/products/nettoyeur-dentaire-electrique">Nettoyeur</a>
+        <a class="dlp-mobile__link dlp-mobile__link--accent" href="/pages/contact">Contact</a>
       </div>
     </header>
 
-    <main id="MainContent">
+    <main id="MainContent" class="dlp-main">
       {% if template.name == 'index' %}
-        <section class="denti-hero" data-animate="fade">
-          <div class="denti-hero__content">
-            <h1>Votre sourire mérite l’excellence</h1>
-            <p>Le Kit LED Denti Luxe délivre un blanchiment professionnel en 10 minutes, directement à la maison. Livraison partout au Maroc, paiement à la livraison.</p>
-            <div class="denti-hero__actions">
-              <a class="denti-btn denti-btn--primary" href="#denti-produits">Découvrir nos produits</a>
-              <a class="denti-btn denti-btn--outline" href="/products/kit-led-denti-luxe">Commander le Kit LED</a>
+        <section class="dlp-hero" data-animate>
+          <div class="dlp-hero__content">
+            <p class="dlp-hero__badge">Innovation dentaire premium</p>
+            <h1>Transformez votre sourire en 10 minutes par jour</h1>
+            <p class="dlp-hero__lead">Kit LED Denti Luxe, stérilisateur intelligent et nettoyeur dentaire électrique. Livraison express partout au Maroc et paiement à la livraison.</p>
+            <div class="dlp-hero__actions">
+              <a class="dlp-btn dlp-btn--primary" href="#dlp-produits">Découvrir nos produits</a>
+              <a class="dlp-btn dlp-btn--outline" href="/products/kit-led-denti-luxe">Commander le Kit LED</a>
             </div>
-            <div class="denti-hero__badges">
-              <span>+1 500 sourires transformés</span>
-              <span>Satisfaction 4,9/5</span>
-            </div>
+            <ul class="dlp-hero__stats">
+              <li>+1 800 sourires éclatants</li>
+              <li>Note moyenne 4,9/5</li>
+            </ul>
           </div>
-          <div class="denti-hero__visual">
-            <div class="denti-hero__halo"></div>
-            <img src="{{ 'kit-led-1.png' | asset_url }}" alt="Kit LED Denti Luxe" loading="lazy">
+          <div class="dlp-hero__visual">
+            <span class="dlp-hero__halo"></span>
+            <img src="{{ 'kit-led-1.png' | file_url }}" alt="Kit LED Denti Luxe" loading="lazy">
           </div>
         </section>
-        <section class="denti-trust" data-animate="fade">
+
+        <section class="dlp-trust" data-animate>
           <article>
-            <span class="denti-trust__icon">🚚</span>
-            <h3>Livraison rapide</h3>
-            <p>Partout au Maroc en 48h</p>
+            <span class="dlp-trust__icon">🚚</span>
+            <h3>Livraison 24-48h</h3>
+            <p>Partout au Maroc</p>
           </article>
           <article>
-            <span class="denti-trust__icon">🛡️</span>
+            <span class="dlp-trust__icon">💳</span>
+            <h3>Paiement à la livraison</h3>
+            <p>Commande sans risque</p>
+          </article>
+          <article>
+            <span class="dlp-trust__icon">🛡️</span>
             <h3>Satisfait ou remboursé</h3>
             <p>Retour 30 jours</p>
           </article>
-          <article>
-            <span class="denti-trust__icon">💳</span>
-            <h3>Paiement à la livraison</h3>
-            <p>Commandez en toute confiance</p>
-          </article>
         </section>
-        <section class="denti-products" id="denti-produits" data-animate="fade">
+
+        <section class="dlp-products" id="dlp-produits" data-animate>
           <header>
-            <h2>Nos solutions premium</h2>
-            <p>Des appareils professionnels inspirés des cliniques dentaires, pensés pour votre routine à domicile.</p>
+            <h2>Nos best-sellers Denti Luxe</h2>
+            <p>Des solutions professionnelles inspirées des cliniques dentaires.</p>
           </header>
-          <div class="denti-products__grid">
-            <article class="denti-product-card">
-              <img src="{{ 'kit-led-2.png' | asset_url }}" alt="Kit LED Denti Luxe" loading="lazy">
+          <div class="dlp-products__grid">
+            <article class="dlp-card">
+              <img src="{{ 'kit-led-2.png' | file_url }}" alt="Kit LED Denti Luxe" loading="lazy">
               <h3>Kit LED Denti Luxe</h3>
-              <p>Blanchiment dentaire professionnel avec lumière LED froide et gel sans sensibilité.</p>
-              <span class="denti-product-card__price">299 DH</span>
-              <a class="denti-btn denti-btn--primary" href="/products/kit-led-denti-luxe">Commander maintenant</a>
+              <p>Blanchiment professionnel sans sensibilité avec halo LED froid.</p>
+              <span class="dlp-card__price">299 DH</span>
+              <a class="dlp-btn dlp-btn--full" href="/products/kit-led-denti-luxe">Commander maintenant</a>
             </article>
-            <article class="denti-product-card">
-              <img src="{{ 'sterilisateur-1.png' | asset_url }}" alt="Stérilisateur intelligent" loading="lazy">
+            <article class="dlp-card">
+              <img src="{{ 'sterilisateur-1.png' | file_url }}" alt="Stérilisateur intelligent" loading="lazy">
               <h3>Stérilisateur Intelligent</h3>
-              <p>Élimine 99,9 % des bactéries grâce à la technologie UV-C intégrée.</p>
-              <span class="denti-product-card__price">299 DH</span>
-              <a class="denti-btn denti-btn--primary" href="/products/sterilisateur-intelligent">Commander maintenant</a>
+              <p>Technologie UV-C pour éliminer 99,9 % des bactéries.</p>
+              <span class="dlp-card__price">299 DH</span>
+              <a class="dlp-btn dlp-btn--full" href="/products/sterilisateur-intelligent-de-brosses-a-dents-uv-smart-toothbrush-sanitizer">Commander maintenant</a>
             </article>
-            <article class="denti-product-card">
-              <img src="{{ 'nettoyeur-1.png' | asset_url }}" alt="Nettoyeur dentaire électrique" loading="lazy">
+            <article class="dlp-card">
+              <img src="{{ 'nettoyeur-1.png' | file_url }}" alt="Nettoyeur dentaire électrique" loading="lazy">
               <h3>Nettoyeur Dentaire Électrique</h3>
-              <p>Élimine le tartre et les taches en douceur avec ses 5 modes intelligents.</p>
-              <span class="denti-product-card__price">349 DH</span>
-              <a class="denti-btn denti-btn--primary" href="/products/nettoyeur-dentaire-electrique">Commander maintenant</a>
+              <p>5 modes intelligents pour éliminer le tartre et les taches.</p>
+              <span class="dlp-card__price">349 DH</span>
+              <a class="dlp-btn dlp-btn--full" href="/products/nettoyeur-dentaire-electrique">Commander maintenant</a>
             </article>
           </div>
         </section>
-        <section class="denti-reviews" data-animate="fade">
+
+        <section class="dlp-social" data-animate>
           <header>
             <h2>Ils ont adopté le sourire Denti Luxe</h2>
-            <p>Des résultats visibles dès la première semaine.</p>
+            <p>Des résultats visibles dès les premières utilisations.</p>
           </header>
-          <div class="denti-reviews__grid">
-            <article class="denti-review">
-              <img src="{{ 'review-1.png' | asset_url }}" alt="Avis client 1" loading="lazy">
+          <div class="dlp-social__grid">
+            <article class="dlp-review">
+              <img src="{{ 'kit-after.png' | file_url }}" alt="Résultat Denti Luxe" loading="lazy">
               <div>
-                <div class="denti-review__stars" aria-label="Note 5 sur 5">
-                  <span>★★★★★</span>
-                </div>
-                <p>« Résultats incroyables en 7 jours, sans aucune sensibilité. »</p>
-                <span class="denti-review__author">— Salma, Casablanca</span>
+                <span aria-label="Note 5 sur 5">★★★★★</span>
+                <p>« Blanchiment puissant et indolore, mes dents sont éclatantes ! »</p>
+                <span>Salma – Casablanca</span>
               </div>
             </article>
-            <article class="denti-review">
-              <img src="{{ 'review-2.png' | asset_url }}" alt="Avis client 2" loading="lazy">
+            <article class="dlp-review">
+              <img src="{{ 'kit-led-3.png' | file_url }}" alt="Client Denti Luxe" loading="lazy">
               <div>
-                <div class="denti-review__stars" aria-label="Note 5 sur 5">
-                  <span>★★★★★</span>
-                </div>
-                <p>« La livraison a été ultra rapide et le packaging est premium. »</p>
-                <span class="denti-review__author">— Yassine, Rabat</span>
+                <span aria-label="Note 5 sur 5">★★★★★</span>
+                <p>« Service client impeccable, j’ai reçu mon kit en 24h. »</p>
+                <span>Yassine – Rabat</span>
               </div>
             </article>
-            <article class="denti-review">
-              <img src="{{ 'review-3.png' | asset_url }}" alt="Avis client 3" loading="lazy">
+            <article class="dlp-review">
+              <img src="{{ 'sterilisateur-2.png' | file_url }}" alt="Stérilisateur Denti Luxe" loading="lazy">
               <div>
-                <div class="denti-review__stars" aria-label="Note 5 sur 5">
-                  <span>★★★★★</span>
-                </div>
-                <p>« Le stérilisateur me rassure au quotidien, je l’adore ! »</p>
-                <span class="denti-review__author">— Nadia, Marrakech</span>
+                <span aria-label="Note 5 sur 5">★★★★★</span>
+                <p>« Le stérilisateur me rassure, ma brosse est toujours impeccable. »</p>
+                <span>Nadia – Marrakech</span>
               </div>
             </article>
-            <article class="denti-review">
-              <img src="{{ 'review-4.png' | asset_url }}" alt="Avis client 4" loading="lazy">
+            <article class="dlp-review">
+              <img src="{{ 'nettoyeur-3.png' | file_url }}" alt="Nettoyeur dentaire" loading="lazy">
               <div>
-                <div class="denti-review__stars" aria-label="Note 5 sur 5">
-                  <span>★★★★★</span>
-                </div>
-                <p>« Nettoyeur efficace, mes dents sont plus lisses après chaque utilisation. »</p>
-                <span class="denti-review__author">— Mehdi, Tanger</span>
+                <span aria-label="Note 5 sur 5">★★★★★</span>
+                <p>« Nettoyage précis, zéro plaque tenace. Je recommande ! »</p>
+                <span>Mehdi – Tanger</span>
               </div>
             </article>
           </div>
         </section>
-        <section class="denti-offer" data-animate="fade">
-          <div class="denti-offer__content">
-            <h2>Offre limitée : -30 % sur tout le site</h2>
-            <p>Profitez d’une réduction exceptionnelle avant la fin du compte à rebours. Paiement à la livraison disponible.</p>
-            <div class="denti-offer__meta">
-              <div class="denti-offer__timer" data-countdown>15:00</div>
-              <div class="denti-offer__progress">
-                <div class="denti-offer__progress-bar" data-stock-bar></div>
+
+        <section class="dlp-offer" data-animate>
+          <div class="dlp-offer__copy">
+            <h2>Offre limitée : -30 % ce soir</h2>
+            <p>Activez votre transformation dès maintenant. Paiement à la livraison et livraison express garantie.</p>
+            <div class="dlp-offer__status">
+              <div class="dlp-stock" data-stock-root>
+                <span class="dlp-stock__label" data-stock-label>Stock faible</span>
+                <div class="dlp-stock__bar">
+                  <span class="dlp-stock__fill" data-stock-bar></span>
+                </div>
+                <p class="dlp-stock__count">Plus que <strong data-stock-left>12</strong> commandes disponibles aujourd’hui.</p>
               </div>
-              <span class="denti-offer__stock" data-stock-label>Stock limité</span>
-              <span class="denti-offer__stock-count">Plus que <strong data-stock-left>12</strong> commandes disponibles</span>
+              <div class="dlp-timer">
+                <span class="dlp-timer__label">Fin de l’offre à 23h59</span>
+                <span class="dlp-timer__value" data-midnight-timer>00:00:00</span>
+              </div>
             </div>
-            <a class="denti-btn denti-btn--glow" href="/collections/tous-les-produits">Commander maintenant</a>
+            <a class="dlp-btn dlp-btn--glow" href="/collections/tous-les-produits">Commander maintenant</a>
           </div>
-          <div class="denti-offer__visual">
-            <img src="{{ 'kit-after.png' | asset_url }}" alt="Résultat du kit Denti Luxe" loading="lazy">
+          <div class="dlp-offer__visual">
+            <img src="{{ 'kit-before.png' | file_url }}" alt="Avant après Denti Luxe" loading="lazy">
           </div>
         </section>
       {% endif %}
@@ -186,8 +191,8 @@
       document.documentElement.classList.remove('no-js');
 
       const dentiReady = () => {
-        const navToggle = document.querySelector('.denti-nav__toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const navToggle = document.querySelector('.dlp-nav__toggle');
+        const mobileMenu = document.getElementById('dlp-mobile-menu');
         if (navToggle && mobileMenu) {
           const closeMenu = () => {
             navToggle.setAttribute('aria-expanded', 'false');
@@ -200,8 +205,8 @@
               closeMenu();
             } else {
               navToggle.setAttribute('aria-expanded', 'true');
-              mobileMenu.hidden = false;
               navToggle.classList.add('is-active');
+              mobileMenu.hidden = false;
             }
           });
           mobileMenu.querySelectorAll('a').forEach((link) => {
@@ -216,198 +221,274 @@
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: 0.15 });
-
+        }, { threshold: 0.12 });
         document.querySelectorAll('[data-animate]').forEach((section) => observer.observe(section));
 
-        const countdownDuration = 15 * 60 * 1000;
-        const now = Date.now();
-        let countdownEnd = sessionStorage.getItem('dentiCountdownEnd');
-        if (!countdownEnd || Number(countdownEnd) < now) {
-          countdownEnd = (now + countdownDuration).toString();
-          sessionStorage.setItem('dentiCountdownEnd', countdownEnd);
+        const midnightTarget = () => {
+          const now = new Date();
+          const target = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 0, 0);
+          if (now.getTime() > target.getTime()) {
+            target.setDate(target.getDate() + 1);
+          }
+          return target.getTime();
+        };
+        const formatTime = (ms) => {
+          const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+          const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+          const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+          const seconds = String(totalSeconds % 60).padStart(2, '0');
+          return `${hours}:${minutes}:${seconds}`;
+        };
+        const timers = document.querySelectorAll('[data-midnight-timer]');
+        if (timers.length) {
+          let targetTime = Number(sessionStorage.getItem('dlpMidnightTarget'));
+          if (!targetTime || Date.now() > targetTime) {
+            targetTime = midnightTarget();
+            sessionStorage.setItem('dlpMidnightTarget', String(targetTime));
+          }
+          const renderTimer = () => {
+            const remaining = targetTime - Date.now();
+            if (remaining <= 0) {
+              targetTime = midnightTarget();
+              sessionStorage.setItem('dlpMidnightTarget', String(targetTime));
+            }
+            const display = formatTime(targetTime - Date.now());
+            timers.forEach((el) => { el.textContent = display; });
+          };
+          renderTimer();
+          setInterval(renderTimer, 1000);
         }
 
-        const countdownEls = document.querySelectorAll('[data-countdown]');
-        const updateCountdown = () => {
-          const remaining = Math.max(0, Number(countdownEnd) - Date.now());
-          const minutes = Math.floor(remaining / 60000).toString().padStart(2, '0');
-          const seconds = Math.floor((remaining % 60000) / 1000).toString().padStart(2, '0');
-          countdownEls.forEach((el) => { el.textContent = `${minutes}:${seconds}`; });
-          if (remaining <= 0) {
-            countdownEnd = (Date.now() + countdownDuration).toString();
-            sessionStorage.setItem('dentiCountdownEnd', countdownEnd);
+        const stockAreas = document.querySelectorAll('[data-stock-bar]');
+        if (stockAreas.length) {
+          const stateKey = 'dlpStockState';
+          const freshState = () => ({
+            total: Math.floor(Math.random() * 20) + 45,
+            left: Math.floor(Math.random() * 8) + 8
+          });
+          let state;
+          try {
+            state = JSON.parse(sessionStorage.getItem(stateKey) || 'null');
+          } catch (error) {
+            state = null;
           }
-        };
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        let stockTotal = parseInt(sessionStorage.getItem('dentiStockTotal') || '0', 10);
-        let stockLeft = parseInt(sessionStorage.getItem('dentiStockLeft') || '0', 10);
-        if (!stockTotal || !stockLeft || stockLeft >= stockTotal) {
-          stockTotal = Math.floor(Math.random() * 15) + 35;
-          stockLeft = Math.floor(Math.random() * 8) + 6;
-          sessionStorage.setItem('dentiStockTotal', stockTotal.toString());
-          sessionStorage.setItem('dentiStockLeft', stockLeft.toString());
-        }
-        const stockBars = document.querySelectorAll('[data-stock-bar]');
-        const stockLabels = document.querySelectorAll('[data-stock-label]');
-        const stockText = document.querySelectorAll('[data-stock-left]');
-        const renderStock = () => {
-          const percent = Math.max(5, Math.round((stockLeft / stockTotal) * 100));
-          stockBars.forEach((bar) => {
-            bar.style.setProperty('--progress', `${percent}%`);
-          });
-          stockLabels.forEach((label) => {
-            label.textContent = `Il ne reste que ${stockLeft} pièces en stock`;
-          });
-          stockText.forEach((label) => {
-            label.textContent = `${stockLeft}`;
-          });
-        };
-        renderStock();
-        setInterval(() => {
-          if (stockLeft > 3) {
-            stockLeft -= 1;
-            sessionStorage.setItem('dentiStockLeft', stockLeft.toString());
-            renderStock();
+          if (!state || typeof state.total !== 'number' || typeof state.left !== 'number' || state.left <= 2 || state.left >= state.total) {
+            state = freshState();
+            sessionStorage.setItem(stateKey, JSON.stringify(state));
           }
-        }, 90000);
-
-
-        document.querySelectorAll('[data-qty-up]').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const input = btn.closest('form')?.querySelector('input[name=\"quantity\"]');
-            if (!input) return;
-            const next = Math.max(1, parseInt(input.value || '1', 10) + 1);
-            input.value = next;
-          });
-        });
-
-        document.querySelectorAll('[data-qty-down]').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const input = btn.closest('form')?.querySelector('input[name=\"quantity\"]');
-            if (!input) return;
-            const next = Math.max(1, parseInt(input.value || '1', 10) - 1);
-            input.value = next;
-          });
-        });
-        document.querySelectorAll('[data-gallery]').forEach((gallery) => {
-          const track = gallery.querySelector('.denti-gallery__track');
-          if (!track) return;
-          const slides = Array.from(track.children);
-          let index = 0;
-          const update = () => {
-            slides.forEach((slide, i) => {
-              slide.classList.toggle('is-active', i === index);
-              slide.style.transform = `translateX(${(i - index) * 100}%)`;
+          const renderStock = () => {
+            const percent = Math.max(5, Math.round((state.left / state.total) * 100));
+            document.querySelectorAll('[data-stock-bar]').forEach((bar) => {
+              bar.style.setProperty('--dlp-stock-progress', `${percent}%`);
+            });
+            document.querySelectorAll('[data-stock-label]').forEach((label) => {
+              label.textContent = state.left <= 6 ? 'Stock critique' : 'Stock faible';
+            });
+            document.querySelectorAll('[data-stock-left]').forEach((label) => {
+              label.textContent = String(state.left);
             });
           };
-          update();
-          const prev = gallery.querySelector('.denti-gallery__control--prev');
-          const next = gallery.querySelector('.denti-gallery__control--next');
-          if (prev) {
-            prev.addEventListener('click', () => {
-              index = (index - 1 + slides.length) % slides.length;
-              update();
+          renderStock();
+          setInterval(() => {
+            if (state.left > 3) {
+              state.left -= 1;
+              sessionStorage.setItem(stateKey, JSON.stringify(state));
+              renderStock();
+            }
+          }, 120000);
+        }
+
+        const carousels = document.querySelectorAll('[data-carousel]');
+        carousels.forEach((carousel) => {
+          const track = carousel.querySelector('.dlp-track');
+          if (!track) return;
+          const slides = Array.from(track.querySelectorAll('.dlp-slide'));
+          if (!slides.length) return;
+          const dotsContainer = carousel.querySelector('.dlp-dots');
+          let index = 0;
+          const updateActive = (targetIndex) => {
+            index = targetIndex;
+            slides.forEach((slide, idx) => {
+              slide.classList.toggle('is-active', idx === index);
+            });
+            if (dotsContainer) {
+              dotsContainer.querySelectorAll('button').forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === index);
+                dot.setAttribute('aria-current', dotIndex === index ? 'true' : 'false');
+              });
+            }
+          };
+          const goTo = (targetIndex) => {
+            const clamped = (targetIndex + slides.length) % slides.length;
+            const offset = slides[clamped].offsetLeft;
+            track.scrollTo({ left: offset, behavior: 'smooth' });
+            updateActive(clamped);
+          };
+          const prev = carousel.querySelector('.dlp-prev');
+          const next = carousel.querySelector('.dlp-next');
+          prev && prev.addEventListener('click', () => goTo(index - 1));
+          next && next.addEventListener('click', () => goTo(index + 1));
+          if (dotsContainer) {
+            slides.forEach((_, dotIndex) => {
+              const dot = document.createElement('button');
+              dot.type = 'button';
+              dot.className = 'dlp-dot';
+              dot.setAttribute('aria-label', `Aller à l’image ${dotIndex + 1}`);
+              dot.addEventListener('click', () => goTo(dotIndex));
+              dotsContainer.appendChild(dot);
             });
           }
-          if (next) {
-            next.addEventListener('click', () => {
-              index = (index + 1) % slides.length;
-              update();
+          let rafId = null;
+          const onScroll = () => {
+            if (rafId) return;
+            rafId = requestAnimationFrame(() => {
+              rafId = null;
+              const scrollLeft = track.scrollLeft;
+              const closestIndex = slides.reduce((acc, slide, idx) => {
+                const distance = Math.abs(slide.offsetLeft - scrollLeft);
+                if (distance < acc.distance) {
+                  return { distance, idx };
+                }
+                return acc;
+              }, { distance: Infinity, idx: 0 }).idx;
+              updateActive(closestIndex);
             });
-          }
-          let startX = 0;
-          track.addEventListener('touchstart', (event) => { startX = event.touches[0].clientX; });
-          track.addEventListener('touchend', (event) => {
-            const delta = event.changedTouches[0].clientX - startX;
-            if (Math.abs(delta) > 40) {
-              if (delta > 0) {
-                index = (index - 1 + slides.length) % slides.length;
-              } else {
-                index = (index + 1) % slides.length;
-              }
-              update();
-            }
-          });
-        });
-        document.querySelectorAll('.denti-bundle__option').forEach((option) => {
-          option.addEventListener('click', () => {
-            const parent = option.closest('.denti-product');
-            if (!parent) return;
-            parent.querySelectorAll('.denti-bundle__option').forEach((btn) => btn.classList.remove('is-active'));
-            option.classList.add('is-active');
-            const priceHolder = parent.querySelector('[data-product-price]');
-            const compareHolder = parent.querySelector('[data-product-compare]');
-            const quantityInput = parent.querySelector('input[name="quantity"]');
-            const offerInput = parent.querySelector('[name="properties[Offre]"]');
-            const price = option.getAttribute('data-price');
-            const compare = option.getAttribute('data-compare');
-            const quantity = option.getAttribute('data-quantity');
-            const label = option.getAttribute('data-offer-label');
-            if (priceHolder) priceHolder.textContent = price;
-            if (compareHolder) {
-              if (compare) {
-                compareHolder.textContent = compare;
-                compareHolder.style.display = 'inline-flex';
-              } else {
-                compareHolder.style.display = 'none';
-              }
-            }
-            if (quantityInput && quantity) {
-              quantityInput.value = quantity;
-            }
-            if (offerInput && label) {
-              if (offerInput.tagName === 'INPUT') {
-                offerInput.value = label;
-              } else {
-                offerInput.textContent = label;
-              }
-            }
-          });
+          };
+          track.addEventListener('scroll', onScroll);
+          updateActive(0);
         });
 
-        document.querySelectorAll('.denti-form').forEach((form) => {
-          form.addEventListener('submit', async (event) => {
+        const productSections = document.querySelectorAll('[data-product-root]');
+        productSections.forEach((section) => {
+          const variantsRaw = section.getAttribute('data-variants');
+          if (!variantsRaw) return;
+          let variants = [];
+          try {
+            const sanitized = variantsRaw.replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+            variants = JSON.parse(sanitized);
+          } catch (error) {
+            variants = [];
+          }
+          if (!variants.length) return;
+          const map = new Map(variants.map((variant) => [String(variant.id), variant]));
+          const form = section.querySelector('[data-product-form]');
+          const idInput = form ? form.querySelector('input[name="id"]') : null;
+          const quantityInput = form ? form.querySelector('input[name="quantity"]') : null;
+          const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+          const variantSelect = section.querySelector('.dlp-variant-select');
+          const priceEl = section.querySelector('[data-price]');
+          const compareEl = section.querySelector('[data-compare]');
+          const feedback = section.querySelector('[data-feedback]');
+          const defaultVariantId = section.getAttribute('data-selected-variant');
+          const bundleButtons = section.querySelectorAll('.dlp-bundle');
+
+          const setVariant = (variantId) => {
+            if (!variantId || !map.has(String(variantId))) return;
+            const variant = map.get(String(variantId));
+            form?.setAttribute('data-variant-id', String(variant.id));
+            if (idInput) {
+              idInput.value = variant.id;
+            }
+            if (variantSelect) {
+              variantSelect.value = String(variant.id);
+            }
+            if (priceEl) {
+              priceEl.textContent = variant.price_formatted;
+            }
+            if (compareEl) {
+              const hasCompare = Number(variant.compare_value || 0) > Number(variant.price_value || 0);
+              if (hasCompare && variant.compare_formatted && variant.compare_formatted !== variant.price_formatted) {
+                compareEl.textContent = variant.compare_formatted;
+                compareEl.hidden = false;
+              } else {
+                compareEl.hidden = true;
+              }
+            }
+            bundleButtons.forEach((button) => {
+              const isActive = button.getAttribute('data-variant-id') === String(variant.id);
+              button.classList.toggle('is-active', isActive);
+              button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+            if (submitButton) {
+              if (variant.available) {
+                submitButton.disabled = false;
+                submitButton.classList.remove('is-disabled');
+              } else {
+                submitButton.disabled = true;
+                submitButton.classList.add('is-disabled');
+              }
+            }
+            if (feedback) {
+              feedback.textContent = variant.available ? 'En stock – expédition immédiate' : 'Actuellement épuisé';
+              feedback.dataset.state = variant.available ? 'success' : 'error';
+            }
+          };
+
+          bundleButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+              setVariant(button.getAttribute('data-variant-id'));
+            });
+          });
+
+          variantSelect && variantSelect.addEventListener('change', (event) => {
+            setVariant(event.target.value);
+          });
+
+          section.querySelectorAll('[data-qty-up]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              if (!quantityInput) return;
+              quantityInput.value = String(Math.max(1, Number(quantityInput.value || '1') + 1));
+            });
+          });
+          section.querySelectorAll('[data-qty-down]').forEach((btn) => {
+            btn.addEventListener('click', () => {
+              if (!quantityInput) return;
+              quantityInput.value = String(Math.max(1, Number(quantityInput.value || '1') - 1));
+            });
+          });
+
+          form && form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const submitButton = form.querySelector('button[type="submit"]');
+            if (!form.dataset.variantId) {
+              if (feedback) {
+                feedback.textContent = 'Veuillez sélectionner une option disponible.';
+                feedback.dataset.state = 'error';
+              }
+              return;
+            }
+            const payload = {
+              items: [{
+                id: Number(form.dataset.variantId),
+                quantity: quantityInput ? Math.max(1, Number(quantityInput.value) || 1) : 1
+              }]
+            };
             if (submitButton) {
               submitButton.disabled = true;
               submitButton.classList.add('is-loading');
             }
-            const variantId = form.getAttribute('data-variant-id');
-            const quantityInput = form.querySelector('input[name="quantity"]');
-            const quantity = quantityInput ? Math.max(1, parseInt(quantityInput.value, 10)) : 1;
-            const offerField = form.querySelector('[name="properties[Offre]"]');
-            const properties = {};
-            if (offerField && offerField.value) {
-              properties['Offre'] = offerField.value;
-            }
-            if (!variantId) {
-              alert('Produit indisponible pour le moment.');
-              if (submitButton) {
-                submitButton.disabled = false;
-                submitButton.classList.remove('is-loading');
-              }
-              return;
+            if (feedback) {
+              feedback.textContent = 'Ajout au panier…';
+              feedback.dataset.state = 'loading';
             }
             try {
-              await fetch('/cart/add.js', {
+              const response = await fetch('/cart/add.json', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  items: [{
-                    id: Number(variantId),
-                    quantity: quantity,
-                    properties: properties
-                  }]
-                })
+                body: JSON.stringify(payload)
               });
+              if (!response.ok) {
+                throw new Error('Erreur panier');
+              }
+              if (feedback) {
+                feedback.textContent = 'Produit ajouté. Redirection vers le paiement…';
+                feedback.dataset.state = 'success';
+              }
               window.location.href = '/checkout';
             } catch (error) {
-              console.error(error);
-              alert("Une erreur est survenue. Merci de réessayer.");
+              if (feedback) {
+                feedback.textContent = 'Impossible d’ajouter le produit. Merci de réessayer.';
+                feedback.dataset.state = 'error';
+              }
             } finally {
               if (submitButton) {
                 submitButton.disabled = false;
@@ -415,6 +496,8 @@
               }
             }
           });
+
+          setVariant(defaultVariantId || variants[0].id);
         });
       };
 
