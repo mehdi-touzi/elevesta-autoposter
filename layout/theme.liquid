@@ -18,7 +18,9 @@
     <header class="dlp-header" data-dlp-header>
       <div class="dlp-header__inner">
         <a class="dlp-header__brand" href="/" aria-label="Denti Luxe – retour à l'accueil">
-          <span class="dlp-header__monogram">DL</span>
+          <span class="dlp-header__logo-wrap">
+            <img class="dlp-header__logo" src="{{ 'logo-denti-luxe.jpg' | file_url }}" alt="Logo Denti Luxe" width="52" height="52" loading="eager" fetchpriority="high">
+          </span>
           <span class="dlp-header__text">
             <span class="dlp-header__title">Denti Luxe</span>
             <span class="dlp-header__subtitle">L’excellence du sourire commence ici</span>
@@ -386,8 +388,11 @@
             if (!variantId || !map.has(String(variantId))) return;
             const variant = map.get(String(variantId));
             form?.setAttribute('data-variant-id', String(variant.id));
+            if (form) {
+              form.dataset.variantId = String(variant.id);
+            }
             if (idInput) {
-              idInput.value = variant.id;
+              idInput.value = String(variant.id);
             }
             if (variantSelect) {
               variantSelect.value = String(variant.id);
@@ -449,19 +454,18 @@
 
           form && form.addEventListener('submit', async (event) => {
             event.preventDefault();
-            if (!form.dataset.variantId) {
+            const variantId = form.dataset.variantId;
+            if (!variantId) {
               if (feedback) {
                 feedback.textContent = 'Veuillez sélectionner une option disponible.';
                 feedback.dataset.state = 'error';
               }
               return;
             }
-            const payload = {
-              items: [{
-                id: Number(form.dataset.variantId),
-                quantity: quantityInput ? Math.max(1, Number(quantityInput.value) || 1) : 1
-              }]
-            };
+            const quantity = quantityInput ? Math.max(1, Number(quantityInput.value) || 1) : 1;
+            const formData = new FormData();
+            formData.append('id', variantId);
+            formData.append('quantity', String(quantity));
             if (submitButton) {
               submitButton.disabled = true;
               submitButton.classList.add('is-loading');
@@ -471,10 +475,9 @@
               feedback.dataset.state = 'loading';
             }
             try {
-              const response = await fetch('/cart/add.json', {
+              const response = await fetch('/cart/add.js', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: formData
               });
               if (!response.ok) {
                 throw new Error('Erreur panier');
