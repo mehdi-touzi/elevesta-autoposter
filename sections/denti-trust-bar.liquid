@@ -1,0 +1,12 @@
+{% schema %}
+{
+  "name": "Denti – Trust bar",
+  "settings": [
+    {"type":"text","id":"text","label":"Texte","default":"✅ Livraison rapide • 🇲🇦 Paiement à la livraison (COD) • ⭐ 12 000 clients"}
+  ],
+  "presets": [{"name":"Denti – Trust bar"}]
+}
+{% endschema %}
+<div class="trust-bar">
+  <div class="container">{{ section.settings.text }}</div>
+</div>

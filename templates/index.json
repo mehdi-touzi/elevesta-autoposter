@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "main": {
+      "type": "denti-hero"
+    },
+    "trust": {
+      "type": "denti-trust-bar"
+    },
+    "adv": {
+      "type": "denti-advantages"
+    },
+    "product": {
+      "type": "denti-product"
+    },
+    "before": {
+      "type": "denti-beforeafter"
+    },
+    "testimonials": {
+      "type": "denti-testimonials"
+    },
+    "faq": {
+      "type": "denti-faq"
+    },
+    "guarantee": {
+      "type": "denti-guarantee"
+    },
+    "footer": {
+      "type": "denti-footer"
+    }
+  },
+  "order": [
+    "main",
+    "trust",
+    "adv",
+    "product",
+    "before",
+    "testimonials",
+    "faq",
+    "guarantee",
+    "footer"
+  ]
+}

@@ -1,0 +1,89 @@
+{% assign product = all_products[section.settings.product_handle] %}
+{% if product == nil %}
+  {% assign product = all_products['kit-led-denti-luxe'] %}
+{% endif %}
+<section class="reveal" id="denti-product" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="product-card">
+      <div class="product-gallery">
+        {% assign gallery = section.settings.gallery | split: ',' %}
+        {% assign first_image = gallery | first %}
+        <div class="product-gallery__main">
+          {% if product.featured_image %}
+            <img src="{{ product.featured_image | img_url: '800x' }}" alt="{{ product.title }}" width="800" height="800" loading="lazy" data-gallery-main>
+          {% else %}
+            <img src="{{ first_image | strip | default: 'https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_1.webp?v=1761221034' }}" alt="{{ product.title | default: 'Kit LED Denti Luxe' }}" width="800" height="800" loading="lazy" data-gallery-main>
+          {% endif %}
+        </div>
+        <div class="product-gallery__thumbs">
+          {% for image_url in gallery %}
+            {% assign clean = image_url | strip %}
+            {% if clean != '' %}
+            <button type="button" data-gallery-thumb class="{% if forloop.first %}active{% endif %}">
+              <img src="{{ clean }}" data-large="{{ clean }}" width="120" height="120" alt="{{ product.title }} vignette {{ forloop.index }}" loading="lazy">
+            </button>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="product-info">
+        <span class="label">Kit LED Denti Luxe</span>
+        <h2>{{ product.title | default: 'Kit LED de Blanchiment Dentaire Denti Luxe' }}</h2>
+        <div class="price">
+          <span>{{ product.price | default: 29900 | money_with_currency_format }}</span>
+          <del>{{ product.compare_at_price_max | default: 49900 | money_with_currency_format }}</del>
+        </div>
+        <ul class="bullets">
+          {% if section.blocks.size > 0 %}
+            {% for block in section.blocks %}
+              <li {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m9.55 17-5.3-5.3 1.4-1.4 3.9 3.88 9.7-9.7 1.4 1.42Z"/></svg>
+                <span>{{ block.settings.text }}</span>
+              </li>
+            {% endfor %}
+          {% else %}
+            <li>
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m9.55 17-5.3-5.3 1.4-1.4 3.9 3.88 9.7-9.7 1.4 1.42Z"/></svg>
+              <span>Résultats visibles dès la première semaine.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m9.55 17-5.3-5.3 1.4-1.4 3.9 3.88 9.7-9.7 1.4 1.42Z"/></svg>
+              <span>Technologie LED professionnelle, sans douleur.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="m9.55 17-5.3-5.3 1.4-1.4 3.9 3.88 9.7-9.7 1.4 1.42Z"/></svg>
+              <span>Kit complet : gouttières, gel premium, carte de teinte.</span>
+            </li>
+          {% endif %}
+        </ul>
+        {% if product %}
+          {% form 'product', product, data-product-form: '', class: 'product-form' %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            <button type="submit" class="btn-primary" data-add-to-cart>
+              {{ section.settings.cta_label }}
+            </button>
+          {% endform %}
+        {% else %}
+          <a class="btn-primary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+        {% endif %}
+        <div class="mini-badge">🚚 Livraison rapide &nbsp;|&nbsp; 🇲🇦 Paiement à la réception</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Denti – Produit",
+  "settings": [
+    {"type":"text","id":"product_handle","label":"Handle du produit","default":"kit-led-denti-luxe"},
+    {"type":"text","id":"cta_label","label":"Texte du bouton","default":"Commander maintenant"},
+    {"type":"url","id":"cta_link","label":"Lien du bouton fallback","default":"/products/kit-led-denti-luxe"},
+    {"type":"textarea","id":"gallery","label":"URLs galerie (séparées par virgules)","default":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_1.webp?v=1761221034, https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_2.webp?v=1761221035, https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_3.webp?v=1761221035, https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_4.webp?v=1761221034, https://cdn.shopify.com/s/files/1/0772/0953/4709/files/kit_led_5.webp?v=1761221035"}
+  ],
+  "blocks": [
+    {"type":"bullet","name":"Bénéfice","settings":[{"type":"text","id":"text","label":"Texte","default":"Résultats cliniquement prouvés en 7 jours."}]}
+  ],
+  "max_blocks": 6,
+  "presets": [{"name":"Denti – Produit","blocks":[{"type":"bullet"},{"type":"bullet"},{"type":"bullet"}]}]
+}
+{% endschema %}

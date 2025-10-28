@@ -1,0 +1,24 @@
+{% schema %}
+{
+  "name": "Denti – Footer",
+  "settings": [
+    {"type":"url","id":"logo","label":"Logo","default":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/logo_denti_luxe.png?v=1761220999"},
+    {"type":"text","id":"copyright","label":"Copyright","default":"© {{ 'now' | date: '%Y' }} Denti Luxe. Tous droits réservés."}
+  ],
+  "blocks": [
+    {"type":"link","name":"Lien","settings":[{"type":"text","id":"label","label":"Label","default":"Politique de confidentialité"},{"type":"url","id":"url","label":"URL","default":"/policies/privacy-policy"}]}
+  ],
+  "presets": [{"name":"Denti – Footer","blocks":[{"type":"link"},{"type":"link"}]}]
+}
+{% endschema %}
+<footer class="footer" data-section-id="{{ section.id }}">
+  <div class="container">
+    <img src="{{ section.settings.logo }}" alt="Denti Luxe" width="180" height="60" loading="lazy">
+    <div class="footer__links">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</a>
+      {% endfor %}
+    </div>
+    <p>{{ section.settings.copyright }}</p>
+  </div>
+</footer>

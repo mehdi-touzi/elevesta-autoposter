@@ -1,0 +1,49 @@
+{% schema %}
+{
+  "name": "Denti – Avantages",
+  "settings": [
+    {"type":"text","id":"title","label":"Titre","default":"Pourquoi choisir Denti Luxe ?"}
+  ],
+  "blocks": [
+    {
+      "type":"advantage",
+      "name":"Avantage",
+      "settings": [
+        {"type":"text","id":"heading","label":"Titre","default":"Livraison express 24-72h"},
+        {"type":"textarea","id":"text","label":"Texte","default":"Recevez votre kit partout au Maroc avec suivi SMS."},
+        {"type":"url","id":"icon","label":"Icône","default":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/livraison.png?v=1761221036"}
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [{"name":"Denti – Avantages","blocks":[{"type":"advantage"},{"type":"advantage"},{"type":"advantage"}]}]
+}
+{% endschema %}
+<section class="reveal" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:36px;">
+      <span class="label">L'excellence Denti Luxe</span>
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    {% assign defaults = '[{"icon":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/livraison.png?v=1761221036","heading":"Livraison express 24-72h","text":"Recevez votre kit partout au Maroc avec suivi SMS."},{"icon":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/garantie.png?v=1761221036","heading":"Garantie 30 jours","text":"Satisfait ou remboursé sans discussion."},{"icon":"https://cdn.shopify.com/s/files/1/0772/0953/4709/files/satisfaction.png?v=1761221035","heading":"12 000 clientes comblées","text":"Notes moyennes 4,9/5 sur nos avis vérifiés."}]' | parse_json %}
+    <div class="grid-3">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          <div class="card" {{ block.shopify_attributes }}>
+            <img src="{{ block.settings.icon | default: defaults[forloop.index0].icon }}" alt="" width="80" height="80" loading="lazy">
+            <h3>{{ block.settings.heading | default: defaults[forloop.index0].heading }}</h3>
+            <p>{{ block.settings.text | default: defaults[forloop.index0].text }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for item in defaults %}
+          <div class="card">
+            <img src="{{ item.icon }}" alt="" width="80" height="80" loading="lazy">
+            <h3>{{ item.heading }}</h3>
+            <p>{{ item.text }}</p>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>

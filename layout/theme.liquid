@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% if page_title != blank %}{{ page_title }}{% else %}{{ settings.default_meta_title }}{% endif %}</title>
+    <meta name="description" content="{{ page_description | default: settings.default_meta_description }}">
+    <meta property="og:title" content="{{ page_title | default: settings.default_meta_title }}">
+    <meta property="og:description" content="{{ page_description | default: settings.default_meta_description }}">
+    <meta property="og:image" content="{{ settings.default_og_image }}">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'denti.css' | asset_url | stylesheet_tag }}
+    {% if settings.meta_pixel_id != blank %}
+      <script defer>window.dentiMetaPixelId="{{ settings.meta_pixel_id }}";</script>
+    {% endif %}
+    {% if settings.tiktok_pixel_id != blank %}
+      <script defer>window.dentiTiktokPixelId="{{ settings.tiktok_pixel_id }}";</script>
+    {% endif %}
+    {{ content_for_header }}
+  </head>
+  <body class="denti-theme">
+    {% section 'announcement-bar' %}
+    {{ content_for_layout }}
+    <div class="sticky-cta hide" data-sticky-cta data-scroll-target="#denti-product">
+      <span>Commander – 299 DH</span>
+    </div>
+    {% render 'floating-whatsapp' %}
+    {{ 'denti.js' | asset_url | script_tag: defer: true }}
+    {{ 'theme.js' | asset_url | script_tag: defer: true }}
+    <!-- SendIt COD hook
+    <script>
+      window.sendItOrder = function(order){
+        // order = {name, phone, city, address, items, total}
+      };
+    </script>
+    -->
+    {{ content_for_footer }}
+  </body>
+</html>
