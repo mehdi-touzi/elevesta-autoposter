@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "settings": {
+        "heading": "Page introuvable",
+        "text": "La page que vous cherchez n'existe pas. Revenez à l'accueil."
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,10 @@
+{% assign whatsapp_enabled = settings.whatsapp_phone != blank %}
+{% if whatsapp_enabled %}
+  {% assign whatsapp_message = settings.whatsapp_message | url_param_escape %}
+  {% assign whatsapp_href = 'https://wa.me/' | append: settings.whatsapp_phone | append: '?text=' | append: whatsapp_message %}
+  {% assign whatsapp_position = settings.whatsapp_position | default: 'bottom-right' %}
+  {% assign pos = whatsapp_position | split: '-' %}
+  <a href="{{ whatsapp_href }}" class="floating-whatsapp" data-floating-whatsapp data-show-mobile="{{ settings.whatsapp_show_mobile }}" data-show-desktop="{{ settings.whatsapp_show_desktop }}" style="{% if pos contains 'bottom' %}bottom:24px;{% else %}top:24px;{% endif %}{% if pos contains 'right' %}right:24px;{% else %}left:24px;{% endif %}" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.5 11.5 0 0 0 3.45 20.54l-1.07 3.92 4-1.05A11.5 11.5 0 1 0 20.5 3.5Zm-5.36 15a8.4 8.4 0 0 1-4-.98l-.3-.16-2.37.62.63-2.31-.17-.33A8.38 8.38 0 1 1 15.14 18.5Zm2.34-3.58c-.13-.21-.48-.34-1-.6s-.31-.16-.61.2-.95 1-1.17 1.21-.43.23-.73.08a6.84 6.84 0 0 1-3.16-2.77c-.24-.42.24-.39.68-1.31.08-.16 0-.3 0-.42s-.61-1.47-.84-2-.45-.46-.61-.47-.34-.01-.52-.01a1 1 0 0 0-.72.33 2.39 2.39 0 0 0-.75 1.8 4.15 4.15 0 0 0 .85 2.18c.12.16 1.67 2.55 4.06 3.58a13.78 13.78 0 0 0 1.37.5 3.29 3.29 0 0 0 1.52.1 2.48 2.48 0 0 0 1.69-1.18 2.05 2.05 0 0 0 .14-1.15Z"/></svg>
+  </a>
+{% endif %}

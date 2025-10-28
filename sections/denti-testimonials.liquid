@@ -1,0 +1,52 @@
+{% schema %}
+{
+  "name": "Denti – Témoignages",
+  "settings": [
+    {"type":"text","id":"title","label":"Titre","default":"Elles adorent leur nouveau sourire"},
+    {"type":"textarea","id":"subtitle","label":"Sous-titre","default":"Des milliers de clientes marocaines ont choisi Denti Luxe."}
+  ],
+  "blocks": [
+    {
+      "type":"testimonial",
+      "name":"Avis",
+      "settings": [
+        {"type":"text","id":"name","label":"Nom","default":"Salma"},
+        {"type":"text","id":"location","label":"Ville","default":"Casablanca"},
+        {"type":"textarea","id":"text","label":"Avis","default":"Je vois la différence après trois séances seulement, c'est bluffant !"},
+        {"type":"url","id":"photo","label":"Photo","default":"https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=96&q=80"},
+        {"type":"range","id":"rating","label":"Étoiles","min":1,"max":5,"step":1,"default":5}
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [{"name":"Denti – Témoignages","blocks":[{"type":"testimonial"},{"type":"testimonial"},{"type":"testimonial"}]}]
+}
+{% endschema %}
+<section class="reveal" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:36px;">
+      <span class="label">Avis vérifiés</span>
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="grid-3">
+      {% for block in section.blocks %}
+        <article class="testimonial-card" {{ block.shopify_attributes }}>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <img src="{{ block.settings.photo }}" alt="Photo {{ block.settings.name }}" width="64" height="64" loading="lazy">
+            <div>
+              <strong>{{ block.settings.name }}</strong>
+              <div style="color:#888;font-size:.9rem;">{{ block.settings.location }}</div>
+            </div>
+          </div>
+          <div class="stars" aria-hidden="true">
+            {% for i in (1..block.settings.rating) %}
+              <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="m12 17.27-5.18 3.05 1.39-5.95-4.54-3.94 6-.52L12 4l2.33 5.91 6 .52-4.54 3.94 1.39 5.95Z"/></svg>
+            {% endfor %}
+          </div>
+          <p>“{{ block.settings.text }}”</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

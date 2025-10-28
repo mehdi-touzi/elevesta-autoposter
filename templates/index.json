@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "hero": { "type": "denti-hero", "settings": {} },
+    "trust_bar": { "type": "denti-trust-bar", "settings": {} },
+    "advantages": { "type": "denti-advantages", "settings": {} },
+    "product": { "type": "denti-product", "settings": {} },
+    "beforeafter": { "type": "denti-beforeafter", "settings": {} },
+    "testimonials": { "type": "denti-testimonials", "settings": {} },
+    "faq": { "type": "denti-faq", "settings": {} },
+    "guarantee": { "type": "denti-guarantee", "settings": {} },
+    "footer": { "type": "denti-footer", "settings": {} }
+  },
+  "order": [
+    "hero",
+    "trust_bar",
+    "advantages",
+    "product",
+    "beforeafter",
+    "testimonials",
+    "faq",
+    "guarantee",
+    "footer"
+  ]
+}
