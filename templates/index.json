@@ -1,39 +1,21 @@
 {
   "sections": {
-    "main": {
-      "type": "denti-hero"
-    },
-    "trust": {
-      "type": "denti-trust-bar"
-    },
-    "adv": {
-      "type": "denti-advantages"
-    },
-    "product": {
-      "type": "denti-product"
-    },
-    "before": {
-      "type": "denti-beforeafter"
-    },
-    "testimonials": {
-      "type": "denti-testimonials"
-    },
-    "faq": {
-      "type": "denti-faq"
-    },
-    "guarantee": {
-      "type": "denti-guarantee"
-    },
-    "footer": {
-      "type": "denti-footer"
-    }
+    "hero": { "type": "denti-hero", "settings": {} },
+    "trust_bar": { "type": "denti-trust-bar", "settings": {} },
+    "advantages": { "type": "denti-advantages", "settings": {} },
+    "product": { "type": "denti-product", "settings": {} },
+    "beforeafter": { "type": "denti-beforeafter", "settings": {} },
+    "testimonials": { "type": "denti-testimonials", "settings": {} },
+    "faq": { "type": "denti-faq", "settings": {} },
+    "guarantee": { "type": "denti-guarantee", "settings": {} },
+    "footer": { "type": "denti-footer", "settings": {} }
   },
   "order": [
-    "main",
-    "trust",
-    "adv",
+    "hero",
+    "trust_bar",
+    "advantages",
     "product",
-    "before",
+    "beforeafter",
     "testimonials",
     "faq",
     "guarantee",
