@@ -1,0 +1,42 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% if page_title %}{{ page_title | escape }} · {% endif %}{{ shop.name | escape }}</title>
+    <meta name="description" content="{{ page_description | default: shop.description | escape }}">
+    <meta name="keywords" content="Kit LED blanchiment dents, Denti Luxe Maroc, Paiement à la réception">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    {{ 'denti.css' | asset_url | stylesheet_tag }}
+    <style>
+      :root {
+        --color-primary: {{ settings.color_primary | default: '#004A7C' }};
+        --color-secondary: {{ settings.color_secondary | default: '#CBA135' }};
+        --color-light: {{ settings.color_light | default: '#FFFFFF' }};
+      }
+    </style>
+    <script>
+      document.documentElement.classList.remove('no-js');
+      document.documentElement.classList.add('js');
+    </script>
+    {{ content_for_header }}
+  </head>
+  <body class="denti-body{% unless settings.enable_reveal %} no-reveal{% endunless %}" data-reveal-enabled="{{ settings.enable_reveal }}" data-sticky-enabled="{{ settings.enable_sticky_cta }}">
+    <a class="skip-to-content" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+    <div id="MainContent" role="main">
+      {{ content_for_layout }}
+    </div>
+    {% if settings.enable_sticky_cta %}
+      <div class="mobile-sticky-cta" data-sticky-cta>
+        <a href="#product" class="btn btn--gold" data-scroll-to>
+          {{ 'Acheter maintenant' }}
+        </a>
+      </div>
+    {% endif %}
+    {{ 'denti.js' | asset_url | script_tag: defer: true }}
+    {{ content_for_footer }}
+    {%- render 'floating-whatsapp' -%}
+  </body>
+</html>

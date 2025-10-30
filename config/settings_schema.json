@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Identité Denti Luxe",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Couleur primaire",
+        "default": "#004A7C"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Couleur secondaire",
+        "default": "#CBA135"
+      },
+      {
+        "type": "color",
+        "id": "color_light",
+        "label": "Couleur claire",
+        "default": "#FFFFFF"
+      }
+    ]
+  },
+  {
+    "name": "Interactions",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_reveal",
+        "label": "Activer les animations de révélation",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sticky_cta",
+        "label": "Afficher le bouton d'achat mobile",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Support client",
+    "settings": [
+      {
+        "type": "text",
+        "id": "whatsapp_phone",
+        "label": "Numéro WhatsApp (inclure indicatif)",
+        "default": "212600000000"
+      }
+    ]
+  }
+]

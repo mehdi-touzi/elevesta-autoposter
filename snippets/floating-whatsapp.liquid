@@ -1,0 +1,25 @@
+{% assign phone = settings.whatsapp_phone | default: '212600000000' %}
+{% assign phone = phone | replace: ' ', '' %}
+<div class="floating-whatsapp" style="position:fixed;right:1.6rem;bottom:1.6rem;z-index:1000;">
+  <a href="https://wa.me/{{ phone | strip }}" target="_blank" rel="noopener" class="floating-whatsapp__link" aria-label="Discuter sur WhatsApp" style="display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:50%;background:#25d366;box-shadow:0 10px 24px rgba(37,211,102,0.35);color:#fff;font-size:2.4rem;">
+    <span aria-hidden="true">✆</span>
+    <span class="visually-hidden">WhatsApp</span>
+  </a>
+</div>
+<style>
+  .floating-whatsapp__link:focus {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  .floating-whatsapp .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
