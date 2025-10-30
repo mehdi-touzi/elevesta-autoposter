@@ -1,0 +1,203 @@
+{
+  "sections": {
+    "hero": {
+      "type": "denti-hero-v8",
+      "settings": {
+        "heading": "Blanchiment premium à domicile",
+        "subheading": "Kit LED Denti Luxe : un sourire hollywoodien en 7 jours, paiement à la livraison partout au Maroc.",
+        "primary_label": "Commander le kit",
+        "secondary_label": "Voir la FAQ"
+      }
+    },
+    "advantages": {
+      "type": "denti-advantages-v8",
+      "blocks": {
+        "adv-1": {
+          "type": "advantage",
+          "settings": {
+            "title": "Livraison express Maroc",
+            "description": "Commandez avant 20h, expédition le jour même avec confirmation téléphone.",
+            "default_icon": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/livraison.png?v=1761221036"
+          }
+        },
+        "adv-2": {
+          "type": "advantage",
+          "settings": {
+            "title": "Garantie 30 jours",
+            "description": "Résultats visibles sinon nous vous remboursons.",
+            "default_icon": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/garantie.png?v=1761221036"
+          }
+        },
+        "adv-3": {
+          "type": "advantage",
+          "settings": {
+            "title": "Paiement à réception",
+            "description": "Payez votre commande en espèces à la livraison.",
+            "default_icon": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/satisfaction.png?v=1761221035"
+          }
+        }
+      },
+      "block_order": ["adv-1", "adv-2", "adv-3"],
+      "settings": {
+        "heading": "Pourquoi choisir Denti Luxe ?"
+      }
+    },
+    "product": {
+      "type": "denti-product-v8",
+      "blocks": {
+        "bullet-1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Technologie LED 32 points pour booster le gel blanchissant."
+          }
+        },
+        "bullet-2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Formule douce sans peroxyde adaptée aux dents sensibles."
+          }
+        },
+        "bullet-3": {
+          "type": "bullet",
+          "settings": {
+            "text": "Livraison gratuite partout au Maroc sous 48h."
+          }
+        }
+      },
+      "block_order": ["bullet-1", "bullet-2", "bullet-3"],
+      "settings": {
+        "heading": "Kit LED Denti Luxe",
+        "subheading": "Tout ce dont vous avez besoin pour un sourire éclatant : gouttière LED, gel premium et nuancier.",
+        "button_label": "Ajouter au panier",
+        "trust_text": "Paiement à la réception · Livraison gratuite Maroc"
+      }
+    },
+    "beforeafter": {
+      "type": "denti-beforeafter-v8",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "default_image": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/before_after_1.webp?v=1761221034"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "default_image": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/before_after_2.webp?v=1761221034"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "default_image": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/before_after_3.webp?v=1761221035"
+          }
+        },
+        "slide-4": {
+          "type": "slide",
+          "settings": {
+            "default_image": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/before_after_4.webp?v=1761221035"
+          }
+        },
+        "slide-5": {
+          "type": "slide",
+          "settings": {
+            "default_image": "https://cdn.shopify.com/s/files/1/0772/0953/4709/files/before_after_5.webp?v=1761221036"
+          }
+        }
+      },
+      "block_order": ["slide-1", "slide-2", "slide-3", "slide-4", "slide-5"],
+      "settings": {
+        "heading": "Avant / Après",
+        "subtitle": "Les résultats réels de nos clients marocains"
+      }
+    },
+    "testimonials": {
+      "type": "denti-testimonials-v8",
+      "blocks": {
+        "rev-1": {
+          "type": "review",
+          "settings": {
+            "name": "Salma",
+            "review": "Résultat bluffant en quelques jours seulement, livraison rapide à Casablanca.",
+            "location": "Casablanca"
+          }
+        },
+        "rev-2": {
+          "type": "review",
+          "settings": {
+            "name": "Yassine",
+            "review": "Service client top et suivi WhatsApp jusqu'à la réception.",
+            "location": "Rabat"
+          }
+        },
+        "rev-3": {
+          "type": "review",
+          "settings": {
+            "name": "Amal",
+            "review": "Je l'utilise avant chaque soirée, aucun problème de sensibilité.",
+            "location": "Marrakech"
+          }
+        }
+      },
+      "block_order": ["rev-1", "rev-2", "rev-3"],
+      "settings": {
+        "heading": "Ils adorent leur nouveau sourire",
+        "subheading": "Noté 4,9/5 par plus de 3 000 clients au Maroc"
+      }
+    },
+    "faq": {
+      "type": "denti-faq-v8",
+      "blocks": {
+        "faq-1": {
+          "type": "faq",
+          "settings": {
+            "question": "Le kit est-il sûr pour l'émail ?",
+            "answer": "Oui, notre formule sans peroxyde protège votre émail tout en éliminant les taches."
+          }
+        },
+        "faq-2": {
+          "type": "faq",
+          "settings": {
+            "question": "Comment utiliser le kit ?",
+            "answer": "Appliquez le gel, portez la gouttière LED 10-15 minutes par jour pendant 7 jours."
+          }
+        },
+        "faq-3": {
+          "type": "faq",
+          "settings": {
+            "question": "Quand ma commande sera-t-elle livrée ?",
+            "answer": "Livraison gratuite en 24-48h partout au Maroc avec paiement à la réception."
+          }
+        },
+        "faq-4": {
+          "type": "faq",
+          "settings": {
+            "question": "Est-ce que le kit peut rendre mes dents sensibles ?",
+            "answer": "La lumière froide LED et la formule douce évitent toute sensibilité."
+          }
+        },
+        "faq-5": {
+          "type": "faq",
+          "settings": {
+            "question": "Puis-je retourner le produit ?",
+            "answer": "Oui, vous disposez de 30 jours pour demander un échange ou un remboursement."
+          }
+        }
+      },
+      "block_order": ["faq-1", "faq-2", "faq-3", "faq-4", "faq-5"],
+      "settings": {
+        "heading": "Questions fréquentes"
+      }
+    },
+    "footer": {
+      "type": "denti-footer-v8",
+      "settings": {
+        "contact_link": "/pages/contact",
+        "refund_link": "/policies/refund-policy",
+        "privacy_link": "/policies/privacy-policy"
+      }
+    }
+  },
+  "order": ["hero", "advantages", "product", "beforeafter", "testimonials", "faq", "footer"]
+}

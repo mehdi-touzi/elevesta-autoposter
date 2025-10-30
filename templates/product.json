@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "denti-product-v8",
+      "blocks": {
+        "bullet-1": {
+          "type": "bullet",
+          "settings": {
+            "text": "Technologie LED professionnelle adaptée à la maison."
+          }
+        },
+        "bullet-2": {
+          "type": "bullet",
+          "settings": {
+            "text": "Résultats visibles en 7 jours sans sensibilité."
+          }
+        }
+      },
+      "block_order": ["bullet-1", "bullet-2"],
+      "settings": {
+        "heading": "Kit LED Denti Luxe",
+        "subheading": "Notre kit phare pour un sourire éclatant, paiement à la réception.",
+        "button_label": "Ajouter au panier",
+        "trust_text": "Livraison gratuite · Paiement à la réception"
+      }
+    }
+  },
+  "order": ["main"]
+}

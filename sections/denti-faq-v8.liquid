@@ -1,0 +1,89 @@
+<section id="faq" class="section" data-reveal>
+  <div class="section__inner">
+    <h2>{{ section.settings.heading | escape }}</h2>
+    <div class="faq">
+      {% for block in section.blocks %}
+        <article class="faq-item" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.question | escape }}</h3>
+          <p>{{ block.settings.answer }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Denti FAQ V8",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Questions fréquentes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Le kit est-il sûr pour l'émail ?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Réponse",
+          "default": "Oui, notre formule sans peroxyde respecte l'émail et a été validée par des dentistes partenaires."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Denti FAQ V8",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Le kit est-il sûr pour l'émail ?",
+            "answer": "Oui, notre formule douce sans peroxyde respecte l'émail."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Comment utiliser le kit ?",
+            "answer": "Appliquez le gel sur la gouttière et portez le Kit LED 10 à 15 minutes par jour pendant 7 jours."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "answer": "Livraison gratuite partout au Maroc en 24-48h, paiement à la réception."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Le kit provoque-t-il de la sensibilité ?",
+            "answer": "Non, notre technologie LED froide évite les sensibilités dentaires."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Puis-je retourner le produit ?",
+            "answer": "Oui, vous disposez de 30 jours pour nous retourner le kit si vous n'êtes pas satisfait."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

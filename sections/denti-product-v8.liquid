@@ -1,0 +1,124 @@
+{% assign product = all_products['kit-led-denti-luxe'] %}
+<section id="product" class="section" data-reveal>
+  <div class="section__inner">
+    <div class="product-card">
+      <div class="product-card__header">
+        <h2>{{ section.settings.heading | escape }}</h2>
+        <p>{{ section.settings.subheading }}</p>
+        <div class="price">
+          <span class="price__current">
+            {% if product and product.price %}
+              {{ product.price | money_without_trailing_zeros }}
+            {% else %}
+              349 DH
+            {% endif %}
+          </span>
+          <span class="price__compare">
+            {% if product and product.compare_at_price %}
+              {{ product.compare_at_price | money_without_trailing_zeros }}
+            {% else %}
+              499 DH
+            {% endif %}
+          </span>
+        </div>
+        <div class="stock-indicator">
+          <span>Stock limité :</span>
+          <strong data-stock-count>12</strong>
+        </div>
+        <p class="timer" data-delivery-timer>Commande avant 20h00 pour expédier aujourd'hui</p>
+      </div>
+      <ul class="list-bullets">
+        {% for block in section.blocks %}
+          <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+        {% endfor %}
+      </ul>
+      {% if product and product.has_only_default_variant %}
+        {% assign variant = product.selected_or_first_available_variant %}
+      {% elsif product %}
+        {% assign variant = product.selected_or_first_available_variant %}
+      {% endif %}
+      {% if product and variant and variant.available %}
+        <form method="post" action="/cart/add" id="product-form-{{ section.id }}">
+          <input type="hidden" name="id" value="{{ variant.id }}">
+          <button type="submit" class="btn btn--gold">{{ section.settings.button_label }}</button>
+        </form>
+      {% elsif product %}
+        <p>{{ 'products.product.sold_out' | t }}</p>
+      {% else %}
+        <p>{{ 'Produit bientôt disponible.' }}</p>
+      {% endif %}
+      <p>{{ section.settings.trust_text }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Denti Produit V8",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "Kit LED Denti Luxe"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Description",
+      "default": "Routine premium pour blanchir vos dents en 10-15 minutes par jour, sans sensibilités."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "Ajouter au panier"
+    },
+    {
+      "type": "textarea",
+      "id": "trust_text",
+      "label": "Texte de confiance",
+      "default": "Paiement à la réception · Livraison gratuite partout au Maroc"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Avantage",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texte",
+          "default": "Technologie LED bleue pour effacer les taches de café et thé."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Denti Produit V8",
+      "blocks": [
+        {
+          "type": "bullet",
+          "settings": {
+            "text": "Technologie LED bleue pour un sourire visible dès la 1ère semaine."
+          }
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "text": "Gel formulé au Maroc, approuvé par des dentistes partenaires."
+          }
+        },
+        {
+          "type": "bullet",
+          "settings": {
+            "text": "Paiement à la livraison et suivi WhatsApp en temps réel."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

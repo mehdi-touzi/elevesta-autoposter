@@ -1,0 +1,46 @@
+<footer class="footer" data-reveal>
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <img src="{{ section.settings.logo | default: 'https://cdn.shopify.com/s/files/1/0772/0953/4709/files/logo_denti_luxe.png?v=1761220999' }}" alt="{{ shop.name }}">
+    </div>
+    <nav class="footer__links" aria-label="Liens de bas de page">
+      <a href="{{ section.settings.contact_link }}">Contact</a>
+      <a href="{{ section.settings.refund_link }}">Politique de remboursement</a>
+      <a href="{{ section.settings.privacy_link }}">Politique de confidentialité</a>
+    </nav>
+  </div>
+  <p style="margin-top:2rem;font-size:1.2rem;color:rgba(13,33,54,0.7);">© {{ 'now' | date: '%Y' }} {{ shop.name }} · Denti Luxe Maroc</p>
+</footer>
+
+{% schema %}
+{
+  "name": "Denti Footer V8",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Lien Contact"
+    },
+    {
+      "type": "url",
+      "id": "refund_link",
+      "label": "Lien Politique de remboursement"
+    },
+    {
+      "type": "url",
+      "id": "privacy_link",
+      "label": "Lien Politique de confidentialité"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Denti Footer V8"
+    }
+  ]
+}
+{% endschema %}
